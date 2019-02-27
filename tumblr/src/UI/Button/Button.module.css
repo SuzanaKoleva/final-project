@@ -1,5 +1,9 @@
 .Button {
     border-radius: 3px;
-    background-color: azure;
-    
+    background-color: rgb(110, 110, 252);
+    padding: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
 }

@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
+import Header from '../Header/Header.js';
+import Home from '../Home/Home';
+import Login from '../LoginPage/Login';
+import Register from '../LoginPage/Register'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 class App extends Component {
   render() {
+    const isLogged = sessionStorage.getItem('user') !== null;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+      
+        <div className="App">
+        <Header />
+          <main>
+            <Switch>
+               {/* <h1>tumblr</h1> */}
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              {isLogged ?
+              <React.Fragment>
+                <Route path="/" component={Home} />
+              </React.Fragment>
+              :null}
+              
+            </Switch>
+           
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }
