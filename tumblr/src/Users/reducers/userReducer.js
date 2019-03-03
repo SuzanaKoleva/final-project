@@ -1,6 +1,10 @@
 import { ADD_NEW_USER } from '../actions/actionTypes';
 
-const initialState =  {};
+const initialState =  {
+    users: [
+        {id: 1, username: 'Gosho', email: 'gosho@user.com', password: '123456' },
+    ]
+};
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {

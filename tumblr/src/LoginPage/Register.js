@@ -58,6 +58,7 @@ class Register extends React.Component{
         this.props.addNewUser(this.state.newUser);
         const newUser = {username: '', email: '', password: ''};
         this.setState({ newUser });
+        this.props.history.replace('/login');
     }
 
     render() {

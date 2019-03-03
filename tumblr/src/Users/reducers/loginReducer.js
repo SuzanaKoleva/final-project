@@ -1,6 +1,6 @@
 import { USER_LOGIN } from '../actions/actionTypes';
 
-let user = JSON.parse(localStorage.getItem('user'));
+let user = JSON.parse(localStorage.getItem('users'));
 
 const initialState = user ? {loggedIn: true, user} : {};
 
@@ -11,6 +11,9 @@ const reducer = (state = initialState, action) => {
                 loggingIn: true,
                 user: action.user
             }
+        // case USER_LOGIN:
+        //     return {...state, 
+        //         users: state.users.find(user => user.email === action.email && user.password === action.password)}
         default: return state;
     }
 }

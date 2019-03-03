@@ -25,7 +25,7 @@ const inputStyles = {
     padding: '12px',
     width: '270px',
 }
-let loggedUser = null;
+// let loggedUser = null;
 
 class Login extends React.Component{
 
@@ -33,6 +33,7 @@ class Login extends React.Component{
         findUser: {
             email: '',
             password: '',
+            // submitted: false,
         }
     }
 
@@ -49,13 +50,21 @@ class Login extends React.Component{
         findUser.password = value;
         this.setState({ findUser });
     }
-    
-    onLogin = (email, password) => {
-        if(localStorage.getItem('findUser') !== null){
-            findUser = JSON.parse(localStorage.getItem('findUser'));
-            sessionStorage.setItem('users', JSON.stringify(findUser));
-            loggedUser = findUser;
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        // console.log(localStorage);
+        // console.log(localStorage.getItem('users'));
+        // console.log(this.state.findUser);
+        // console.log(this.state.findUser.email);
+        // console.log(this.state.findUser.password);
+        // console.log(localStorage.users);
+        if(this.props.onLogin(this.state.findUser)){
+            sessionStorage.setItem('users', JSON.stringify(this.state.findUser));
             this.props.history.replace('/');
+        }else{
+            console.log('ne uspqh');
         }
         const findUser = { email: '', password: ''};
         this.setState({ findUser });
@@ -77,7 +86,7 @@ class Login extends React.Component{
 
                         <Input onChange={this.setPassword} value={this.state.findUser.password}
                             style={inputStyles} type="password" placeholder="Password"/>
-                        <Button onClick={this.onLogin} style={inputStyles} title="Log in"/>
+                        <Button onClick={this.handleSubmit} style={inputStyles} title="Log in"/>
                         <Button onClick={this.goToRegister} style={inputStyles} title="New register"/>
                         </div>
                 </form>
