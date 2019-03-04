@@ -3,6 +3,8 @@ import logo from '../logo.svg';
 import './App.css';
 import Header from '../Header/Header.js';
 import Home from '../Home/Home';
+import Button from '../UI/Button/Button'
+import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout'
 import Login from '../LoginPage/Login';
 import Register from '../LoginPage/Register'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -15,15 +17,18 @@ class App extends Component {
       <BrowserRouter>
       
         <div className="App">
-        <Header />
+        {/* <Header /> */}
           <main>
             <Switch>
+            <Route path="/" component={ShowAbout} />
                {/* <h1>tumblr</h1> */}
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               {isLogged ?
               <React.Fragment>
-                <Route path="/" component={Home} />
+               
+                {/* <Route path="/" component={Home} /> */}
+                
               </React.Fragment>
               :null}
               
