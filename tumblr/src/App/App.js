@@ -17,17 +17,18 @@ class App extends Component {
       <BrowserRouter>
       
         <div className="App">
+        <ShowAbout/>
         {/* <Header /> */}
           <main>
             <Switch>
-            <Route path="/" component={ShowAbout} />
+            {/* <Route path="/" component={ShowAbout} /> */}
                {/* <h1>tumblr</h1> */}
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               {isLogged ?
               <React.Fragment>
-               
-                {/* <Route path="/" component={Home} /> */}
+               {/* <Route path="/" component={ShowAbout} /> */}
+                <Route path="/" component={Home} />
                 
               </React.Fragment>
               :null}
