@@ -3,6 +3,8 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { onLogin } from '../Users/actions/users';
 import { connect } from 'react-redux';
+import userStorage from '../Users/reducers/store';
+
 
 // const onLogin = props => {
 //     sessionStorage.setItem('user', 'gosho');
@@ -53,7 +55,7 @@ class Login extends React.Component{
 
     handleSubmit = event => {
         event.preventDefault();
-
+        
         // console.log(localStorage);
         // console.log(localStorage.getItem('users'));
         // console.log(this.state.findUser);
@@ -63,9 +65,13 @@ class Login extends React.Component{
         if(this.props.onLogin(this.state.findUser)){
             sessionStorage.setItem('users', JSON.stringify(this.state.findUser));
             this.props.history.replace('/');
+            console.log(userStorage.users);
         }else{
             console.log('ne uspqh');
         }
+        // console.log(userStorage.users[0].email);
+        
+        
         const findUser = { email: '', password: ''};
         this.setState({ findUser });
     }

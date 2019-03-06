@@ -1,0 +1,13 @@
+.imageContainer{
+    width: 150px;
+}
+
+.catContainer{
+    border: 1px solid rgb(110, 110, 252);
+    border-radius: 2%;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    width: 25%;
+}
