@@ -1,38 +1,25 @@
 .container {
-    /* background: purple;    */
-    display: flex;   
-    justify-content: center;
-    background-image: url('./background.jpg')
-    
-}
-.text {
-    color: white;
-    
-}
-.title {
- 
-    font-size: 4em;
-    color: white;
-    margin-bottom: 0;
+    background-color: #00cf35;
 }
 
-.middle {
+.title {
+    color: #ffffff;
+    font-size: 2em;
+}
+.text {
+    color: #ffffff;
+    
+}
+.middleContainer {
+
     display: flex;  
     
     justify-content: center;
     margin-top: 15%;
-    
 }
-
-.loginButton {
-    color: black;
-    background-color: #ffffff;
-}
-.loginContainer {
+.center {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    width: 45%;
 }
-.headerContainer {
-    width: 100%;
-}
-

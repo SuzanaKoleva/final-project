@@ -1,38 +1,68 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import './App.css';
-import Header from '../Header/Header.js';
-import Home from '../Home/Home';
-import Button from '../UI/Button/Button'
-import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout'
-import Login from '../LoginPage/Login';
-import Register from '../LoginPage/Register'
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
+import logo from '../logo.svg';
+
+import './App.css';
+
+/**
+ * Containers
+ */
+import Login from '../LoginPage/Login'
+import Register from '../LoginPage/Register'
+import Home from '../Home/Home'; //TODO: delete - deprecated
+
+import LandingPage from '../LandingPage/LandingPage'
+import DashboardPage from '../DashboardPage/DashboardPage'
+
+
+/**
+ * Components
+ */
+import Header from '../Header/Header.js';
+import Button from '../UI/Button/Button';
+
+import ShowLogin from '../AboutTumblr/ShowLogin/ShowLogin'
+import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout'
+
 class App extends Component {
   render() {
-    const isLogged = sessionStorage.getItem('user') !== null;
+    const isLogged = true
+    //JSON.parse(sessionStorage.getItem('user')) !== null;
+    console.log(isLogged)
     return (
       <BrowserRouter>
       
         <div className="App">
-        <ShowAbout/>
+        
         {/* <Header /> */}
           <main>
             <Switch>
-            {/* <Route path="/" component={ShowAbout} /> */}
-               {/* <h1>tumblr</h1> */}
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              {/* add none logged in routes here */}
+
+
+              
+
               {isLogged ?
               <React.Fragment>
-               {/* <Route path="/" component={ShowAbout} /> */}
-                <Route path="/" component={Home} />
+               
+                <Route path="/dashboard" component={DashboardPage} />
+
+                {/* add logged in routes here */}
+
+
+
+
+
+                <Route  path="/" component={DashboardPage}/> 
                 
-              </React.Fragment>
-              :null}
+              </React.Fragment> : null }
               
+              <Route path="/" component={LandingPage} />
             </Switch>
            
           </main>

@@ -11,7 +11,7 @@ const header = props => (
             <div className={classes.Logo}>
                 <img src={require('../assets/images/tumblr-logo.png')} />
             </div>
-            <Input type="text" placeholder="Search tumblr" />
+            <Input type="text" placeholder=" 🔍 Search tumblr" />
 
             </div>
                 <nav>

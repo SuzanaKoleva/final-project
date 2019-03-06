@@ -1,0 +1,38 @@
+.container {
+    /* background: purple;    */
+    display: flex;   
+    justify-content: center;
+    background-image: url('./background.jpg')
+    
+}
+.text {
+    color: white;
+    
+}
+.title {
+ 
+    font-size: 4em;
+    color: white;
+    margin-bottom: 0;
+}
+
+.middle {
+    display: flex;  
+    
+    justify-content: center;
+    margin-top: 15%;
+    
+}
+
+.loginButton {
+    color: black;
+    background-color: #ffffff;
+}
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+}
+.headerContainer {
+    width: 100%;
+}
+

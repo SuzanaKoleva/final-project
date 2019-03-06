@@ -1,48 +1,29 @@
 import React, { Component } from 'react';
 import classes from './ShowAbout.module.css';
-import Button from '../Button/Button'
-import Header from '../../Header/Header';
-
-
-
-
-// const showAbout = props => {
-
-//  <div>First page</div>
-// }
-
-// export default showAbout
-
-const loginButton = {
-    color: 'black',
-    backgroundColor: '#ffffff',
-}
-let height = window.innerHeight;
-
+import Header from '../../Header/Header'
+import "animate.css/animate.min.css";
 
 
 class ShowAbout extends Component {
+
     render() {
         return (
-            <div   className={classes.container} style = {{height: height}}  >
-        
-                <div className = { classes.headerContainer}>
-                    <Header />
-                    <div className={classes.middle}>
-                        <div className = {classes.loginContainer}>
-                            <h1 className={classes.title}> tumblr </h1>
-                            <p className={classes.text}>Come for what you love.
-                <br />
-                                Stay for what you discover.
-                </p>
-                            <Button title="Get started" />
-
-                            <Button title="Log In" style={loginButton} />
-                        </div>
+            <div className={classes.container}>
+                <Header />
+                <div className={classes.middleContainer}>
+                    <div className = { classes.center }>
+                        <h1 className={classes.title}> Tumblr is so easy to use that it’s hard to explain. </h1>
+                        <p className={classes.text}> We made it really, really simple for people to make a blog and put whatever they want on it. Stories, photos, GIFs, TV shows, links,
+                 quips, dumb jokes, smart jokes, Spotify tracks, mp3s, videos, fashion, art, deep stuff. Tumblr is 460 million different blogs, filled with literally whatever. </p>
                     </div>
                 </div>
             </div>
         )
+
+
+
+
     }
 }
+
 export default ShowAbout

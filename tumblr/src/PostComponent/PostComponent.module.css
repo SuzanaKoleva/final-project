@@ -1,0 +1,56 @@
+.container {
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid black;
+    width: 290px;
+    margin: 10px 0px;
+}
+
+.userImg {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+}
+
+.userNameFont {
+    font-weight: bold;
+}
+
+.followLink {
+    
+    text-decoration: none;
+    font-size:1em;
+    color: #00b8ff;
+}
+
+.postImg {
+    max-width: 100%;
+}
+.postTitle {
+    font-size: 1em;
+}
+.actionContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+.actions {
+    text-decoration: none;
+    font-size: 25px;
+    
+
+}
+.notes {
+    text-decoration: none;
+    color: rgb(78, 74, 74);
+    
+    
+}
+
+.tags {
+    color: darkgray
+}
+
+
+
