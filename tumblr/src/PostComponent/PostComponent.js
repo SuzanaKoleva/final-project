@@ -8,7 +8,7 @@ const postComponent = props =>
         <header>
             <img src={props.propsObj.userImgSrc} className={classes.userImg} />
             <p className={classes.userNameFont}>{props.propsObj.userName}</p>
-            <button className={classes.followLink} onClick={props.onFollow} title = 'Follow'>{ props.propsObj.isPosterFollowed ? 'Unfollow' : 'Follow' }</button>
+            <button className={classes.followLink} onClick={props.onFollowBtnClick} title = 'Follow'>{ props.propsObj.isPosterFollowed ? 'Unfollow' : 'Follow' }</button>
         </header>
         <main>
             <h1 className={classes.postTitle}>{props.propsObj.title}</h1>
@@ -20,16 +20,16 @@ const postComponent = props =>
         <footer>
 
             <div className = {classes.tags}>
-                # tags
+                { props.propsObj.tags.map((tag, i) => <span key={i}>#{tag} </span> )}
             </div>
             <div className ={classes.actionContainer}>
                 <div>
-                    <a className = {classes.notes}href=''> notes</a>
+                    <button className = {classes.notes}href=''> notes</button>
                 </div>
                 <div>
-                    <a className={classes.actions} href='' title = 'Share' > ➣</a>                    
-                    <a className={classes.actions} href='' title = 'Reblog'> 🔁</a>
-                    <a className={classes.actions} href='' title = 'Like'> 🍓</a>
+                    <button onClick={props.onShareBtnClick}className={classes.actions}  title = 'Share' > {props.propsObj.isShare ? 'you shared' : '➣'}</button>                    
+                    <button onClick={props.onReblogBtnClick}className={classes.actions}  title = 'Reblog'>{props.propsObj.isRebloged ? 'you rebloged' : '🔁'} </button>
+                    <button onClick={props. onLikedBtnClick}className={`${classes.actions}  ${props.propsObj.isLiked ? classes.btnClick: ''}`}  title = 'Like'> {props.propsObj.isLiked ? 'you liked' : '🍓'}</button>
                 </div>
 
 

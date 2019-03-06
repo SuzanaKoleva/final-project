@@ -1,10 +1,18 @@
 import { 
+    SET_SELECTED_CATEGORY_NAME,
     LOAD_POSTS,
     ON_FOLLOW,
     ON_SHARE,
     ON_LIKE,
     ON_REBLOG
 } from './constants';
+
+export const setSelectedCategoryNameAction = newCategoryName => {
+    return {
+        type: SET_SELECTED_CATEGORY_NAME, 
+        payload: newCategoryName
+    }
+}
 
 
 export const loadPosts = newPosts => {

@@ -1,27 +1,38 @@
-import { LOAD_POSTS, ON_FOLLOW } from './constants';
+import { LOAD_POSTS, ON_FOLLOW, ON_SHARE, ON_LIKE, ON_REBLOG } from './constants';
 
-const initialState =  {
+const initialState = {
     posts: [
         {
             
-            userImgSrc: 'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg',
+            userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
             userName: 'mocked name',
             postedFromUserId: 1,
             isPosterFollowed: false,
+            isShare: false,
+            isLiked: false,
+            isRebloged: false,
+            backgroundColor: 'red',
+            marginBottom: '0px',
+            
 
             title: 'mockedTitle',
             imgSrc: 'http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',
             discription: 'discrioption',
 
-            category: 'mocked category'
-
-        }, 
-        {
+            category: 'mocked category',
             
-            userImgSrc: 'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg',
+
+        },
+        {
+
+            userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
             userName: 'mocked name2 ',
             postedFromUserId: 2,
             isPosterFollowed: false,
+            isShare: false,
+            isLiked: false,
+            isRebloged: false,
+            backgroundColor: 'red',
 
             title: 'mockedTitle2',
             imgSrc: 'http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',
@@ -35,35 +46,107 @@ const initialState =  {
 
 const reducer = (state = initialState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case LOAD_POSTS: {
 
             return {
-                ...state, 
+                ...state,
                 posts: [...action.payload]
             };
         }
 
         case ON_FOLLOW: {
 
+            const currentinFollowed = state.posts[action.payload.postIndex].isPosterFollowed
+            console.log (currentinFollowed)
             const updatedPost = {
 
                 ...state.posts[action.payload.postIndex],
-                isPosterFollowed: true
+                isPosterFollowed: !currentinFollowed
             };
 
             const updatedPosts = [...state.posts];
 
-            
-            
+
+
             updatedPosts.splice(action.payload.postIndex, 1, updatedPost);
 
             return {
-                ...state, 
+                ...state,
                 posts: updatedPosts
             };
         }
+        case ON_SHARE: {
+            console.log(11111111111, state.posts[action.propsIndex.postIndex].isShare);
+           
+            
+
+            const currentIsShared = state.posts[action.propsIndex.postIndex].isShare;
+
+
+            console.log(2222222222222222222, state.posts[action.propsIndex.postIndex].isShare)
+            const updatedPost = {
+                ...state.posts[action.propsIndex.postIndex],
+                isShare: !currentIsShared,
+                
+               
+            }
+            console.log(state.posts[action.propsIndex.postIndex].backgroundColor)
+            const updatedPosts = [...state.posts];
+
+            updatedPosts.splice(action.propsIndex.postIndex, 1, updatedPost);
+
+            return {
+                ...state,
+                posts: updatedPosts
+            };
+        }
+        case ON_LIKE: {
+            console.log(22222222,state.posts[action.propsIndex.postIndex].backgroundColor)
+            const currentIsLiked = state.posts[action.propsIndex.postIndex].isLiked;
+
+            const updatedPost = {
+                ...state.posts[action.propsIndex.postIndex],
+                isLiked: !currentIsLiked,             
+            }
+
+            if(updatedPost.isLiked) {
+                updatedPost.backgroundColor = 'blue'
+                
+            } else {
+                updatedPost.backgroundColor = 'red'
+            }
+
+            const updatedPosts = [... state.posts];
+
+            updatedPosts.splice(action.propsIndex.postIndex, 1 , updatedPost);
+
+            return {
+                ...state,
+                posts: updatedPosts
+            }
+        }
+        case ON_REBLOG: {
+            console.log(action)
+            const currentisRebloged = state.posts[action.propsIndex.postIndex].isRebloged;
+            console.log(action.propsIndex)
+            console.log()
+            const updatePost = {... state.posts[action.propsIndex.postIndex], isRebloged: !currentisRebloged}
+
+            const updatedPosts = [... state.posts];
+
+            updatedPosts.splice(action.propsIndex.postIndex, 1, updatePost);
+
+            return {
+                ... state,
+                posts:updatedPosts
+            }
+        }
+
+
+
+
 
         default: return state;
     }

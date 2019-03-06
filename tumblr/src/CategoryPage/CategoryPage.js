@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import classes from './DashboardPage.module.css'
+import classes from './CategoryPage.module.css'
 
 import PostComponent from '../PostComponent/PostComponent'
-import { onFollowAction, onShareAction, onLikedAction, onReblogAction } from './actions';
+import { setSelectedCategoryNameAction, onFollowAction, onShareAction, onLikedAction, onReblogAction } from './actions';
 
-class Dashboard extends Component {
+class Category extends Component {
     constructor(props) {
 
         super(props);
 
-        this.categoryOptions = ['pets', 'travel', 'sports', 'beauty', 'home'];
-        this.selectedCategory = '';
+        
+
     }
 
 
-    // state = {
-    //     propsObj: {
-    //         userImgSrc: 'http://qnimate.com/wp-content/uploads/2014/03/images2.jpg',
-    //         userName: 'mocked name',
 
-    //         title: 'mockedTitle',
-    //         imgSrc: 'http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',
-    //         discription: 'discrioption',
+    componentWillMount() {
 
-    //         category: 'mocked category'
+        window.c = this;
 
-    //     }
-    //}
-
-    componentDidMount() {
-
-        window.d = this;
-    }
-
-    redirectToCategory(event) {
-        this.selectedCategory = event.target.value;
-
-        this.props.history.push(`/category/${this.selectedCategory}`)
-        console.log(this.selectedCategory);
+        const categoryName = this.props.match.params.name;
+console.log(1111)
+        this.props.dispatchSetSelectedCategoryName(categoryName);
     }
 
     render() {
@@ -47,12 +31,21 @@ class Dashboard extends Component {
         return (
 
             <div className={classes.container}>
-                <h1 className={classes.titleCategory}> Choose category </h1>
- 
 
-                <select onChange={(e) => this.redirectToCategory(e)} value={this.selectedCategory}>
-                    {this.categoryOptions.map((option) => <option value={option}>{ option }</option>)}
-               </select>
+                { this.props.match.params.name }
+                <h1 className={classes.titleCategory}>  {this.props.posts[0].category} </h1>
+                <div className = {classes.postContainer}>
+
+                    { this.props.posts.map((post, i) => <PostComponent 
+                    key={i}
+                     propsObj={post}
+                      onFollowBtnClick={() => this.props.dispatchOnFollowAction(i)}
+                      onShareBtnClick = {() => this.props.dispatchOnShareAction(i)}
+                      onLikedBtnClick = {() => this.props.dispatchOnLikedAction (i)}
+                      onReblogBtnClick = {() => this.props.dispatchOnReblogAction(i)} /> )}
+
+
+                </div>
             </div>
         )
     }
@@ -60,11 +53,13 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
 
-    const { dashboardReducer } = state;
-    console.log(222, dashboardReducer.posts)    
+    const { categoryReducer } = state;
+    
+    const selectedCategoryName =  categoryReducer.selectedCategory;
+
     return {
 
-        posts: dashboardReducer.posts
+        posts: categoryReducer.categories[selectedCategoryName].posts
     }
 };
 
@@ -83,13 +78,15 @@ const mapDispatchToProps = dispatch => {
         })),
         dispatchOnReblogAction: (someIndex) => dispatch(onReblogAction ({
             postIndex: someIndex
-        }))
+        })),
+
+        dispatchSetSelectedCategoryName: (name) => dispatch(setSelectedCategoryNameAction(name)),
 
 
     }
 } 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Category)
 
 
 // (<section>
