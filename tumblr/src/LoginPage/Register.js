@@ -3,6 +3,7 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { addNewUser } from '../Users/actions/users';
 import { connect } from 'react-redux';
+import userStorage from '../Users/reducers/store';
 
 
 const myStyles = {
@@ -17,7 +18,8 @@ const inputStyles = {
     width: '270px',
 }
 
-let users = [];
+let isValid = true;
+// let users = [];
 
 class Register extends React.Component{
     
@@ -53,12 +55,22 @@ class Register extends React.Component{
 
     addNewUser = event => {
         event.preventDefault();
-        users.push(this.state.newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        this.props.addNewUser(this.state.newUser);
+        if(validateEmail(this.state.newUser.email) && validateUsername(this.state.newUser.username)
+        && validatePassword(this.state.newUser.password)){
+            userStorage.users.push(this.state.newUser);
+            // localStorage.setItem('users', JSON.stringify(users));
+            this.props.addNewUser(this.state.newUser);
+            this.state.newUser.categories = [];
+            const newUser = {username: '', email: '', password: ''};
+            this.setState({ newUser });
+            this.props.history.replace('/login');
+            console.log('uspeh');
+        }else{
+            console.log('Invalid email or password');
+            isValid = false;
+        }
         const newUser = {username: '', email: '', password: ''};
-        this.setState({ newUser });
-        this.props.history.replace('/login');
+        this.setState({ newUser })
     }
 
     render() {
@@ -78,10 +90,27 @@ class Register extends React.Component{
 
                         {/* <Input style={inputStyles} type="password" placeholder="Confirm password"/>  */}
                         <Button onClick={this.addNewUser} style={inputStyles} title="Sign up"/>
+                        {isValid ? 
+                            <span></span>
+                        :   <label>Invalid, username, password or email!</label>}
                         </div>    
                 </form>
             </div>);
     }
+}
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validateUsername(username) {
+    var re = /^[a-zA-Z0-9]+$/;
+    return re.test(String(username).toLowerCase());
+}
+function validatePassword(password)
+{
+    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
+    return re.test(password);
 }
 const mapDispatchToProps = dispatch => {
     return {
