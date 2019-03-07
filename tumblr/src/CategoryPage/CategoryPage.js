@@ -23,6 +23,7 @@ class Category extends Component {
 
         const categoryName = this.props.match.params.name;
 console.log(1111)
+
         this.props.dispatchSetSelectedCategoryName(categoryName);
     }
 
@@ -74,7 +75,7 @@ const mapDispatchToProps = dispatch => {
             postIndex: someIndexNumber
         })),
         dispatchOnLikedAction: (someIndexNumber) => dispatch(onLikedAction({
-            postIndex:someIndexNumber
+            postIndex: someIndexNumber
         })),
         dispatchOnReblogAction: (someIndex) => dispatch(onReblogAction ({
             postIndex: someIndex
