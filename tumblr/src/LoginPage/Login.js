@@ -3,18 +3,6 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { onLogin } from '../Users/actions/actions';
 import { connect } from 'react-redux';
-import userStorage from '../Users/reducers/store';
-
-
-// const onLogin = props => {
-//     sessionStorage.setItem('user', 'gosho');
-//     //user logged succesfully
-//     props.history.replace('/');
-// }
-// const register = props => {
-//     props.history.replace('/register');
-// }
-
 
 const myStyles = {
     display: 'flex',
@@ -27,7 +15,6 @@ const inputStyles = {
     padding: '12px',
     width: '270px',
 }
-// let loggedUser = null;
 
 class Login extends React.Component{
 
@@ -35,7 +22,6 @@ class Login extends React.Component{
         findUser: {
             email: '',
             password: '',
-            // submitted: false,
         }
     }
 
@@ -46,6 +32,10 @@ class Login extends React.Component{
         this.setState({ findUser });
     }
 
+    checkEmail = email => {
+        return this.props.users.some(user => user.email === email);
+    }
+
     setPassword = event => {
         const value = event.target.value;
         const findUser = {...this.state.findUser};
@@ -53,28 +43,17 @@ class Login extends React.Component{
         this.setState({ findUser });
     }
 
-    handleSubmit = event => {
+    checkPassword = password => {
+        return this.props.users.some(user => user.password === password);
+    }
+
+    onLoginUser = event => {
         event.preventDefault();
-        
-        // console.log(localStorage);
-        // console.log(localStorage.getItem('users'));
-        // console.log(this.state.findUser);
-        // console.log(this.state.findUser.email);
-        // console.log(this.state.findUser.password);
-        // console.log(localStorage.users);
-        if(this.props.onLogin(this.state.findUser)){
-            sessionStorage.setItem('users', JSON.stringify(this.state.findUser));
-            this.props.history.replace('/');
-            console.log(userStorage.users);
-            console.log(this.state.findUser);
-        }else{
-            console.log('ne uspqh');
-        }
-        // console.log(userStorage.users[0].email);
-        
-        
-        const findUser = { email: '', password: ''};
-        this.setState({ findUser });
+
+        const findMe = this.props.users.find(user => user.email === this.state.findUser.email
+            && user.password === this.state.findUser.password);
+        this.props.onLogin(findMe);
+        this.props.history.push('/');
     }
 
     goToRegister = event => {
@@ -93,7 +72,7 @@ class Login extends React.Component{
 
                         <Input onChange={this.setPassword} value={this.state.findUser.password}
                             style={inputStyles} type="password" placeholder="Password"/>
-                        <Button onClick={this.handleSubmit} style={inputStyles} title="Log in"/>
+                        <Button onClick={this.onLoginUser} style={inputStyles} title="Log in"/>
                         <Button onClick={this.goToRegister} style={inputStyles} title="New register"/>
                         </div>
                 </form>
@@ -103,25 +82,8 @@ class Login extends React.Component{
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: (email, password) => dispatch(onLogin(email, password))
+        onLoginUser: user => dispatch(onLogin(user))
     }
 } 
-
-// const login = props => {    
-//     return (
-//     <div>
-//         <h1>tumblr</h1>
-//         <form>
-//             <div style={myStyles}>
-//                 <Input style={inputStyles} type="input" placeholder="Email"/>
-//                 <Input style={inputStyles} type="password" placeholder="Password"/>
-//                 <Button onClick={() => onLogin(props)}style={inputStyles} title="Log in"/>
-//                 <Button onClick={() => register(props)}style={inputStyles} title="New register"/>
-//                 </div>
-//         </form>
-//     </div>);
-// }
-
-// export default login;
 
 export default connect(null, mapDispatchToProps)(Login);

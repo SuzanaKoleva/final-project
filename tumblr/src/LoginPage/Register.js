@@ -3,7 +3,6 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { addNewUser } from '../Users/actions/actions';
 import { connect } from 'react-redux';
-import userStorage from '../Users/reducers/store';
 
 
 const myStyles = {
@@ -18,18 +17,16 @@ const inputStyles = {
     width: '270px',
 }
 
-let isValid = true;
-// let users = [];
-
 class Register extends React.Component{
-    
+
     state = {
         newUser: {
             username: '',
             email: '',
             password: '',
-            // confirmPassword: '',
-        }
+            followed: [],
+            categories: [],
+        },
     }
 
     setUsername = event => {
@@ -39,11 +36,21 @@ class Register extends React.Component{
         this.setState({ newUser });
     }
 
+    validateUsername = username => {
+        var re = /^[a-zA-Z0-9]+$/;
+        return re.test(String(username).toLowerCase());
+    }
+
     setEmail = event => {
         const value = event.target.value;
         const newUser = {...this.state.newUser};
         newUser.email = value;
         this.setState({ newUser });
+    }
+
+    validateEmail = email => {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     setPassword = event => {
@@ -53,26 +60,26 @@ class Register extends React.Component{
         this.setState({ newUser });
     }
 
+    validatePassword = password => {
+        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
+        return re.test(password);
+    }
+
     addNewUser = event => {
         event.preventDefault();
-        if(validateEmail(this.state.newUser.email) && validateUsername(this.state.newUser.username)
-        && validatePassword(this.state.newUser.password)){
-            userStorage.users.push(this.state.newUser);
-            // localStorage.setItem('users', JSON.stringify(users));
-            this.props.addNewUser(this.state.newUser);
-            this.state.newUser.categories = [];
-            this.state.newUser.folllowed = [];
-            this.state.newUser.isLogged = false;
-            const newUser = {username: '', email: '', password: ''};
-            this.setState({ newUser });
-            this.props.history.replace('/login');
-            console.log('uspeh');
-        }else{
-            console.log('Invalid email or password');
-            isValid = false;
-        }
-        const newUser = {username: '', email: '', password: ''};
-        this.setState({ newUser })
+        if(this.validateUsername(this.state.newUser.username) && 
+            this.validateEmail(this.state.newUser.email) &&
+            this.validatePassword(this.state.newUser.password)){
+                this.props.addNewUser(this.state.newUser);
+
+                const newUser = {username: '', email: '', password: ''};
+                this.setState({ newUser });
+                this.props.history.replace('/login');
+                console.log('uspeh');
+                console.log(this.props.users);
+            }else{
+                console.log('grehska')
+            }
     }
 
     render() {
@@ -90,34 +97,24 @@ class Register extends React.Component{
                         <Input onChange={this.setPassword} value={this.state.newUser.password}
                             style={inputStyles} type="password" placeholder="Password"/>
 
-                        {/* <Input style={inputStyles} type="password" placeholder="Confirm password"/>  */}
                         <Button onClick={this.addNewUser} style={inputStyles} title="Sign up"/>
-                        {isValid ? 
-                            <span></span>
-                        :   <label>Invalid, username, password or email!</label>}
+
                         </div>    
                 </form>
             </div>);
     }
 }
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
 
-function validateUsername(username) {
-    var re = /^[a-zA-Z0-9]+$/;
-    return re.test(String(username).toLowerCase());
-}
-function validatePassword(password)
-{
-    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
-    return re.test(password);
-}
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        addNewUser: user => dispatch(addNewUser(user))
+        users: state.users
     }
 }
 
-export default connect(null, mapDispatchToProps)(Register);
+const mapDispatchToProps = dispatch => {
+    return {
+        addNewUser: newUser => dispatch(addNewUser(newUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
