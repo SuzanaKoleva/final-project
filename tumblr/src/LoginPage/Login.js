@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { onLogin } from '../Users/actions/users';
+import { onLogin } from '../Users/actions/actions';
 import { connect } from 'react-redux';
 import userStorage from '../Users/reducers/store';
 
@@ -66,6 +66,7 @@ class Login extends React.Component{
             sessionStorage.setItem('users', JSON.stringify(this.state.findUser));
             this.props.history.replace('/');
             console.log(userStorage.users);
+            console.log(this.state.findUser);
         }else{
             console.log('ne uspqh');
         }

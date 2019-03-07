@@ -26,7 +26,6 @@ class Categories extends Component {
         )
     }
 }
-
 const mapDispatchToProps = dispatch => {
     return {
         addNewCategory: id => dispatch(addNewCategory(id))

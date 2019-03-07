@@ -15,8 +15,10 @@ const reducer = (state = initialState, action) => {
         //         user: action.user
         //     }
         case USER_LOGIN:
-            return {...state, 
-                users: state.users.find(user => user.email === action.email && user.password === action.password)}
+            var currState = {...state};
+            // var findUser = currState.users.find(user => user.email === action.email && user.password === action.password)
+            return {currState, 
+                users: currState.users.find(user => user.email === action.email && user.password === action.password)}
         default: return state;
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { addNewUser } from '../Users/actions/users';
+import { addNewUser } from '../Users/actions/actions';
 import { connect } from 'react-redux';
 import userStorage from '../Users/reducers/store';
 
@@ -61,6 +61,8 @@ class Register extends React.Component{
             // localStorage.setItem('users', JSON.stringify(users));
             this.props.addNewUser(this.state.newUser);
             this.state.newUser.categories = [];
+            this.state.newUser.folllowed = [];
+            this.state.newUser.isLogged = false;
             const newUser = {username: '', email: '', password: ''};
             this.setState({ newUser });
             this.props.history.replace('/login');

@@ -22,7 +22,6 @@ import DashboardPage from '../DashboardPage/DashboardPage'
 import CategoryPage from '../CategoryPage/CategoryPage'
 
 import categoriesList from '../ChooseFavCat/CategoriesList'
-import Categories from '../ChooseFavCat/categoryTemplate';
 
 /**
  * Components
@@ -48,18 +47,18 @@ class App extends Component {
             <Switch>
 
               {/* Insert NON - private routes here */}
-              <NonPrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
+              {/* <NonPrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
               <NonPrivateRoute isAuthenticated={isLogged} path='/register' component={Register} />
-              <NonPrivateRoute isAuthenticated={isLogged} path='/landing' component={LandingPage} />
+              <NonPrivateRoute isAuthenticated={isLogged} path='/landing' component={LandingPage} /> */}
 
 
 
-              
+        	    <PrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
+              <PrivateRoute isAuthenticated={isLogged} path='/register' component={Register} />
               {/* Insert private routes here */}
               <PrivateRoute isAuthenticated={isLogged} path='/dashboard' component={DashboardPage} />
               <PrivateRoute isAuthenticated={isLogged} path='/category/:name' component={CategoryPage} />
               <PrivateRoute isAuthenticated={isLogged} path='/listCategories' component={categoriesList}/>
-              {/* <PrivateRoute isAuthenticated={isLogged} path='/listCategories' component={Categories}/> */}
 
             	
 
