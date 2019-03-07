@@ -34,6 +34,7 @@ import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout'
 class App extends Component {
   render() {
     const isLogged = true;
+    // true;
     //JSON.parse(sessionStorage.getItem('user')) !== null;
     console.log(isLogged)
     return (

@@ -34,21 +34,21 @@ export const onShareAction = objPropIndex => {
     console.log('actionShare', objPropIndex)
     return {
         type: ON_SHARE,
-        propsIndex: objPropIndex
+        payload: objPropIndex
     }
 }
 
-export const onLikedAction = objPropsIndex => {
+export const onLikedAction = objpayload => {
     return {
         type: ON_LIKE,
-        propsIndex:objPropsIndex
+        payload:objpayload
     }
 }
 
-export const onReblogAction = objPropsIndex => {
+export const onReblogAction = objpayload => {
     return {
         type: ON_REBLOG,
-        propsIndex: objPropsIndex
+        payload: objpayload
     }
 }
 

@@ -13,6 +13,7 @@ const initialState = {
             isRebloged: false,
             backgroundColor: 'red',
             marginBottom: '0px',
+           
             
 
             title: 'mockedTitle',
@@ -78,24 +79,24 @@ const reducer = (state = initialState, action) => {
             };
         }
         case ON_SHARE: {
-            console.log(11111111111, state.posts[action.propsIndex.postIndex].isShare);
+            console.log(11111111111, state.posts[action.payload.postIndex].isShare);
            
             
 
-            const currentIsShared = state.posts[action.propsIndex.postIndex].isShare;
+            const currentIsShared = state.posts[action.payload.postIndex].isShare;
 
 
-            console.log(2222222222222222222, state.posts[action.propsIndex.postIndex].isShare)
+            console.log(2222222222222222222, state.posts[action.payload.postIndex].isShare)
             const updatedPost = {
-                ...state.posts[action.propsIndex.postIndex],
+                ...state.posts[action.payload.postIndex],
                 isShare: !currentIsShared,
                 
                
             }
-            console.log(state.posts[action.propsIndex.postIndex].backgroundColor)
+            console.log(state.posts[action.payload.postIndex].backgroundColor)
             const updatedPosts = [...state.posts];
 
-            updatedPosts.splice(action.propsIndex.postIndex, 1, updatedPost);
+            updatedPosts.splice(action.payload.postIndex, 1, updatedPost);
 
             return {
                 ...state,
@@ -103,11 +104,11 @@ const reducer = (state = initialState, action) => {
             };
         }
         case ON_LIKE: {
-            console.log(22222222,state.posts[action.propsIndex.postIndex].backgroundColor)
-            const currentIsLiked = state.posts[action.propsIndex.postIndex].isLiked;
+            console.log(22222222,state.posts[action.payload.postIndex].backgroundColor)
+            const currentIsLiked = state.posts[action.payload.postIndex].isLiked;
 
             const updatedPost = {
-                ...state.posts[action.propsIndex.postIndex],
+                ...state.posts[action.payload.postIndex],
                 isLiked: !currentIsLiked,             
             }
 
@@ -120,7 +121,7 @@ const reducer = (state = initialState, action) => {
 
             const updatedPosts = [... state.posts];
 
-            updatedPosts.splice(action.propsIndex.postIndex, 1 , updatedPost);
+            updatedPosts.splice(action.payload.postIndex, 1 , updatedPost);
 
             return {
                 ...state,
@@ -129,14 +130,14 @@ const reducer = (state = initialState, action) => {
         }
         case ON_REBLOG: {
             console.log(action)
-            const currentisRebloged = state.posts[action.propsIndex.postIndex].isRebloged;
-            console.log(action.propsIndex)
+            const currentisRebloged = state.posts[action.payload.postIndex].isRebloged;
+            console.log(action.payload)
             console.log()
-            const updatePost = {... state.posts[action.propsIndex.postIndex], isRebloged: !currentisRebloged}
+            const updatePost = {... state.posts[action.payload.postIndex], isRebloged: !currentisRebloged}
 
             const updatedPosts = [... state.posts];
 
-            updatedPosts.splice(action.propsIndex.postIndex, 1, updatePost);
+            updatedPosts.splice(action.payload.postIndex, 1, updatePost);
 
             return {
                 ... state,
