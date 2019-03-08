@@ -9,15 +9,18 @@ const initialState = {
     availablePostTypes: {
         photos: {
             label: 'Photos',
-            img: '',
+            type: 'photos',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNL-CIxhGAonLttT0RTmwkXvBnHyjM6j-6C-7WZbUiy1KNH06S',
         }, 
         text: {
             label: 'Text',
-            img: ''
+            type: 'text',
+            img: 'http://icons.iconarchive.com/icons/iconsmind/outline/512/Aa-icon.png'
         }, 
         quote: {
             label: 'Quote',
-            img: ''
+            type: 'quote',
+            img: 'https://www.freeiconspng.com/uploads/quotes-png-11.png'
         }
     }
 };
@@ -36,7 +39,7 @@ const reducer = (state = initialState, action) => {
         }
 
         case ON_ADD_POST_MODAL_CLOSE: {
-
+console.log(state.isModalOpened)
             return {
                 ...state,
                 isModalOpened: false

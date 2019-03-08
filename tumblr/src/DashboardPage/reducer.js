@@ -18,7 +18,7 @@ const initialState = {
 
             title: 'mockedTitle',
             imgSrc: 'http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',
-            discription: 'discrioption',
+            description: 'discrioption',
 
             category: 'mocked category',
             
@@ -37,7 +37,7 @@ const initialState = {
 
             title: 'mockedTitle2',
             imgSrc: 'http://www.imgworlds.com/wp-content/uploads/2015/12/18-CONTACTUS-HEADER.jpg',
-            discription: 'discrioption2',
+            description: 'discrioption2',
 
             category: 'mocked category2'
 

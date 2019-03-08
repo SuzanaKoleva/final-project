@@ -2,7 +2,7 @@
     background-color: #ffffff;
     border-radius: 3px;
     border: 1px solid black;
-    width: 290px;
+    /* width: 290px; */
     margin: 10px 0px;
 }
 
@@ -10,7 +10,11 @@
     border-radius: 50%;
     height: 50px;
     width: 50px;
+   
 
+}
+.postHeader {
+    position: relative;
 }
 
 .userNameFont {
