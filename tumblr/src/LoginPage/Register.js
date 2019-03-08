@@ -65,21 +65,35 @@ class Register extends React.Component{
         return re.test(password);
     }
 
+    validation = () => {
+        let hasErrors = false;
+
+        if(!this.validateUsername(this.state.newUser.username)){
+            hasErrors = true;
+        }
+        if(!this.validateEmail(this.state.newUser.email)){
+            hasErrors = true;
+        }
+        if(!this.validatePassword(this.state.newUser.password)){
+            hasErrors = true;
+        }
+        return hasErrors;
+    }
+
     addNewUser = event => {
         event.preventDefault();
-        if(this.validateUsername(this.state.newUser.username) && 
-            this.validateEmail(this.state.newUser.email) &&
-            this.validatePassword(this.state.newUser.password)){
-                this.props.addNewUser(this.state.newUser);
+        const hasErrors = this.validation();
+        if(!hasErrors){
+            this.props.addNewUser(this.state.newUser);
+            console.log(this.props.users);
 
-                const newUser = {username: '', email: '', password: ''};
-                this.setState({ newUser });
-                this.props.history.replace('/login');
-                console.log('uspeh');
-                console.log(this.props.users);
-            }else{
-                console.log('grehska')
-            }
+            const newUser = {username: '', email: '', password: ''};
+            this.setState({ newUser });
+            this.props.history.replace('/login');
+            console.log('uspeh');   
+        }else{
+            console.log('grehska')
+        }
     }
 
     render() {

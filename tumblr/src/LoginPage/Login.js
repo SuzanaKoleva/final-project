@@ -49,7 +49,7 @@ class Login extends React.Component{
 
     onLoginUser = event => {
         event.preventDefault();
-
+        console.log(this.props.users);
         const findMe = this.props.users.find(user => user.email === this.state.findUser.email
             && user.password === this.state.findUser.password);
         this.props.onLogin(findMe);
