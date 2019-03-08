@@ -1,0 +1,25 @@
+.container{
+    background-color: rgb(124,92,255);
+    max-height: 100vh;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+    width: 34%;
+    margin-left: 8%;
+    margin-top: 8%;
+    text-align: justify;
+}
+
+.imgContainer{
+    width: 60%;
+    height: 25%;
+    margin-left: 8%;
+}
+
+.blogs{
+    width: 60%;
+    /* height: 55%; */
+}

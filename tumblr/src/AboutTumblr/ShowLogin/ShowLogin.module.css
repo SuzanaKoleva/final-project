@@ -31,6 +31,9 @@
 .loginContainer {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
 }
 .headerContainer {
     width: 100%;

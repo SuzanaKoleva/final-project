@@ -17,6 +17,8 @@ const inputStyles = {
     width: '270px',
 }
 
+let id = 2;
+
 class Register extends React.Component{
 
     state = {
@@ -26,6 +28,7 @@ class Register extends React.Component{
             password: '',
             followed: [],
             categories: [],
+            posts: [],
         },
     }
 
@@ -84,15 +87,18 @@ class Register extends React.Component{
         event.preventDefault();
         const hasErrors = this.validation();
         if(!hasErrors){
+            this.state.newUser.userId = ++id;
             this.props.addNewUser(this.state.newUser);
-            console.log(this.props.users);
+            console.log(this.props);
 
             const newUser = {username: '', email: '', password: ''};
             this.setState({ newUser });
             this.props.history.replace('/login');
             console.log('uspeh');   
         }else{
-            console.log('grehska')
+            console.log('grehska');
+            console.log(this.props);
+            console.log(this.props.users);
         }
     }
 
@@ -118,7 +124,6 @@ class Register extends React.Component{
             </div>);
     }
 }
-
 const mapStateToProps = state => {
     return {
         users: state.users

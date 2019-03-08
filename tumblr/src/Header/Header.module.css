@@ -38,3 +38,8 @@
     width: 80%;   
     display: flex;
   }
+
+  .profileIcon{
+    width: 25px;
+    height: 25px;
+  }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ShowLogin from '../AboutTumblr/ShowLogin/ShowLogin';
 import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout';
+import ShowTumblrBlogs from '../AboutTumblr/ShowTumblrBlogs/ShowTumblrBlogs';
+import ShowTumblr from '../AboutTumblr/ShowTumblr/ShowTumblr';
+import ShowLastSlide from '../AboutTumblr/ShowLastSlide/showLastSlide';
 import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -23,10 +26,10 @@ class DemoCarousel extends Component {
                 showThumbs={false} 
                 axis={"vertical"}>
                 <ShowLogin />
-                  
-
                 <ShowAbout />
-
+                <ShowTumblrBlogs />
+                <ShowTumblr />
+                <ShowLastSlide />
             </Carousel>
         );
     }

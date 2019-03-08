@@ -25,9 +25,9 @@ export const logOutUser = () => {
     }
 }
 
-export const getCurrentUser = () => {
-    return{
-        type: CURRENT_USER,
-        userId:  JSON.parse(sessionStorage.getItem('currentUserId')),
-    }
-}
+// export const getCurrentUser = user => {
+//     return{
+//         type: CURRENT_USER,
+//         user,
+//     }
+// }

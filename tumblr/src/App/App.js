@@ -34,7 +34,7 @@ import ShowAbout from '../AboutTumblr/ShowAbout/ShowAbout'
 
 class App extends Component {
   render() {
-    const isLogged = true;
+    const isLogged = false;
     // true;
     //JSON.parse(sessionStorage.getItem('user')) !== null;
     console.log(isLogged)
@@ -61,7 +61,7 @@ class App extends Component {
               <PrivateRoute isAuthenticated={isLogged} path='/category/:name' component={CategoryPage} />
               <PrivateRoute isAuthenticated={isLogged} path='/listCategories' component={categoriesList}/>
 
-            	
+              {/* <PrivateRoute isAuthenticated={isLogged} path='/landingPage' component={LandingPage}/> */}
 
 
 

@@ -11,7 +11,11 @@ class ShowAbout extends Component {
             <div className={classes.container}>
                 <Header />
                 <div className={classes.middleContainer}>
-                    <div className = { classes.center }>
+                    <div className={classes.center }>
+                        <div className={classes.backgroundImage}>
+                            <img src={require('./tumblrslide2.png')} />
+                        </div>
+                        
                         <h1 className={classes.title}> Tumblr is so easy to use that it’s hard to explain. </h1>
                         <p className={classes.text}> We made it really, really simple for people to make a blog and put whatever they want on it. Stories, photos, GIFs, TV shows, links,
                  quips, dumb jokes, smart jokes, Spotify tracks, mp3s, videos, fashion, art, deep stuff. Tumblr is 460 million different blogs, filled with literally whatever. </p>

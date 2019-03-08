@@ -15,14 +15,9 @@ const header = props => (
 
             </div>
                 <nav>
-                    {/* {props.isLogged ? 
-        <>
-            <NavLink to="/">Home</NavLink>
-        </>
-        : null} */}
+                    {/* <NavLink to='/profile'><img  className={classes.profileIcon} src='https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-512.png'/></NavLink> */}
                     <NavLink to="/login" className={classes.NavButton} >Sign up</NavLink>
                 </nav>
-                {/* <Button title="Sign Up"/> */}
 
     </header>
             );
