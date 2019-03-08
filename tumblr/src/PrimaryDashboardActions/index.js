@@ -6,7 +6,6 @@ import classes from './index.module.css'
 // import PostComponent from '../PostComponent/PostComponent'
 import { 
     onAddPostModalOpen, 
-    onAddPostModalClose 
 } from './actions';
 
 class PrimaryDashboardActions extends Component {
@@ -21,10 +20,6 @@ class PrimaryDashboardActions extends Component {
         window.a = this;
     }
 
-    openAddPostModal(postType) {
-        //onAddPostModalOpen
-    }
-
     render() {
 
         return (
@@ -34,8 +29,13 @@ class PrimaryDashboardActions extends Component {
                 
                 { Object.keys(this.props.availablePostTypes).map(key => (
                         <button 
+                        className = {classes.buttonPriraryDashboard}
                             key={key}
-                            onClick={() => this.props.triggerOnAddPostModalOpen(key)}>{this.props.availablePostTypes[key].label}
+                            onClick={() => this.props.triggerOnAddPostModalOpen(key)}>
+                            <img  style = {{height: '50px'}} src = { this.props.availablePostTypes[key].img}/>
+                            {this.props.availablePostTypes[key].label}
+                            
+                            
                         </button>
                     )
                 )}
@@ -52,7 +52,6 @@ const mapStateToProps = (state) => {
     
     return {
 
-        // posts: categoryReducer.feed.posts,
         availablePostTypes: primaryDashboardActionsReducer.availablePostTypes,
         postTypeOpened: primaryDashboardActionsReducer. postTypeOpened,
         isModalOpened: primaryDashboardActionsReducer.isModalOpened,
@@ -65,9 +64,6 @@ const mapDispatchToProps = dispatch => {
         triggerOnAddPostModalOpen: (postType) => dispatch(onAddPostModalOpen({
             postTypeOpened: postType
         })),        
-        triggerOnAddPostModalClose: (postType) => dispatch(onAddPostModalClose({
-            
-        })),
     }
 } 
 

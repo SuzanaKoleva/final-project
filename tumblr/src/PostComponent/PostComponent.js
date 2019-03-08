@@ -5,7 +5,7 @@ import classes from './PostComponent.module.css'
 
 const postComponent = props =>
     (<section className={classes.container}>
-        <header>
+        <header className ={classes.postHeader}>
             <img src={props.propsObj.userImgSrc} className={classes.userImg} />
             <p className={classes.userNameFont}>{props.propsObj.userName}</p>
             <button className={classes.followLink} onClick={props.onFollowBtnClick} title = 'Follow'>{ props.propsObj.isPosterFollowed ? 'Unfollow' : 'Follow' }</button>
@@ -13,9 +13,9 @@ const postComponent = props =>
         <main>
             <h1 className={classes.postTitle}>{props.propsObj.title}</h1>
             {props.propsObj.imgSrc ?
-                (<img src={props.propsObj.imgSrc} className={classes.postImg} />)
+                (<img src={props.propsObj.imgSrc} className={classes.postImg}  />)
                 : null}
-            <p> {props.propsObj.discription}</p>
+            <p> {props.propsObj.description}</p>
         </main>
         <footer>
 

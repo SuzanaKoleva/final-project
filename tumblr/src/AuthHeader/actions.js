@@ -3,8 +3,7 @@ import {
     ON_FOLLOW,
     ON_SHARE,
     ON_LIKE,
-    ON_REBLOG,
-    ADD_POST_TO_CATEGORY
+    ON_REBLOG
 } from './constants';
 
 
@@ -42,13 +41,6 @@ export const onReblogAction = objpayload => {
     return {
         type: ON_REBLOG,
         payload: objpayload
-    }
-}
-
-export const addPostToCategory = payload => {
-    return {
-        type: ADD_POST_TO_CATEGORY,
-        payload
     }
 }
 

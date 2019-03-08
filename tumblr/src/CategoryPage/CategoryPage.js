@@ -3,8 +3,14 @@ import { connect } from 'react-redux';
 
 import classes from './CategoryPage.module.css'
 
+import { setSelectedCategory } from '../App/actions';
+import { onFollowAction, onShareAction, onLikedAction, onReblogAction } from './actions';
+
 import PostComponent from '../PostComponent/PostComponent'
-import { setSelectedCategoryNameAction, onFollowAction, onShareAction, onLikedAction, onReblogAction } from './actions';
+import AuthHeader from '../AuthHeader'
+
+
+
 
 class Category extends Component {
     constructor(props) {
@@ -24,7 +30,7 @@ class Category extends Component {
         const categoryName = this.props.match.params.name;
 console.log(1111)
 
-        this.props.dispatchSetSelectedCategoryName(categoryName);
+        this.props.triggerSetSelectedCategory(categoryName);
     }
 
     render() {
@@ -33,8 +39,9 @@ console.log(1111)
 
             <div className={classes.container}>
 
-                { this.props.match.params.name }
-                <h1 className={classes.titleCategory}>  {this.props.posts[0].category} </h1>
+                <AuthHeader history={this.props.history} location={this.props.history}/>
+                
+                <h1 className={classes.titleCategory}>  {this.props.posts.length ? this.props.posts[0].category : ''} </h1>
                 <div className = {classes.postContainer}>
 
                     { this.props.posts.map((post, i) => <PostComponent 
@@ -54,13 +61,13 @@ console.log(1111)
 
 const mapStateToProps = (state) => {
 
-    const { categoryReducer } = state;
+    const { appReducer, categoryReducer } = state;
     
-    const selectedCategoryName =  categoryReducer.selectedCategory;
-
+    const selectedCategoryName =  appReducer.selectedCategory;
+console.log('mapp', selectedCategoryName)
     return {
 
-        posts: categoryReducer.categories[selectedCategoryName].posts
+        posts: selectedCategoryName ? categoryReducer.categories[selectedCategoryName].posts : []
     }
 };
 
@@ -81,37 +88,10 @@ const mapDispatchToProps = dispatch => {
             postIndex: someIndex
         })),
 
-        dispatchSetSelectedCategoryName: (name) => dispatch(setSelectedCategoryNameAction(name)),
+        triggerSetSelectedCategory: (name) => dispatch(setSelectedCategory(name)),
 
 
     }
 } 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category)
-
-
-// (<section>
-//     <header>
-//         <img src={props.propsObj.userImgSrc} />
-//         <p>{props.propsObj.userName}</p>
-//         <button onClick={ props.propsObj.onFollowUser}>Follow</button>
-//     </header>
-//     <main>
-//         <h1>{props.propsObj.title}</h1>
-//         {props.propsObj.imgSrc ?
-//             (<img src={props.propsObj.imgSrc} />)
-//             : null}
-//         <p> {props.propsObj.discription}</p>
-//     </main>
-//     <footer>
-
-//         <div>
-//             # tags
-//         </div>
-//         <div>
-//             buttons
-//         </div>
-
-//     </footer>
-
-// </section>)
