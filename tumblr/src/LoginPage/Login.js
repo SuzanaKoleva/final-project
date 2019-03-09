@@ -60,7 +60,7 @@ class Login extends React.Component{
 
     goToRegister = event => {
         event.preventDefault();
-        this.props.history.replace('/register');
+        this.props.history.push('/register');
     }
 
     render() {

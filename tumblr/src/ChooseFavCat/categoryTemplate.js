@@ -3,6 +3,8 @@ import Button from '../UI/Button/Button';
 import { addNewCategory } from './actions';
 import { connect } from 'react-redux';
 import classes from './chooseFavCat.module.css';
+import ReactDOM from 'react-dom';
+
 
 // const CategoryTemplate = props => (
 //     <section>
@@ -13,14 +15,16 @@ import classes from './chooseFavCat.module.css';
 // )
 
 class Categories extends Component {
+
     render() {
+
         return (
             <section className={classes.catContainer}>
                 <div className={classes.catDiv}>
                     <h1>{this.props.title}</h1>
                     <img className={classes.imageContainer} src={this.props.image} />
-                    <p>{this.props.followers}</p>
-                    <Button onClick={() => this.props.addNewCategory(this.props.id)} title="Add this category"/>
+                    {/* <p>{this.props.followers}</p> */}
+                    <Button onClick={() => console.log(this.props.title)} title="Add this category"/>
                 </div>
             </section>
         )

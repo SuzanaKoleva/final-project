@@ -93,12 +93,14 @@ class Register extends React.Component{
 
             const newUser = {username: '', email: '', password: ''};
             this.setState({ newUser });
-            this.props.history.replace('/login');
+            this.props.history.goBack();
             console.log('uspeh');   
+            console.log(this.props.users);
         }else{
             console.log('grehska');
             console.log(this.props);
             console.log(this.props.users);
+            console.log(this.props.history);
         }
     }
 

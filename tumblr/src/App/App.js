@@ -48,14 +48,14 @@ class App extends Component {
             <Switch>
 
               {/* Insert NON - private routes here */}
-              {/* <NonPrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
+              <NonPrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
               <NonPrivateRoute isAuthenticated={isLogged} path='/register' component={Register} />
-              <NonPrivateRoute isAuthenticated={isLogged} path='/landing' component={LandingPage} /> */}
+              <NonPrivateRoute isAuthenticated={isLogged} path='/landing' component={LandingPage} />
 
 
 
-        	    <PrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
-              <PrivateRoute isAuthenticated={isLogged} path='/register' component={Register} />
+        	    {/* <PrivateRoute isAuthenticated={isLogged} path='/login' component={Login} />
+              <PrivateRoute isAuthenticated={isLogged} path='/register' component={Register} /> */}
               {/* Insert private routes here */}
               <PrivateRoute isAuthenticated={isLogged} path='/dashboard' component={DashboardPage} />
               <PrivateRoute isAuthenticated={isLogged} path='/category/:name' component={CategoryPage} />
@@ -66,11 +66,11 @@ class App extends Component {
 
 
               {/* If no route is matched -> redirect to appropriate route, based on isLogged */}
-              {
+              {/* {
                 isLogged ? 
                   <Route path="/" component={DashboardPage} /> : 
                   <Route path="/" component={LandingPage} />
-              }
+              } */}
 
             </Switch>
            

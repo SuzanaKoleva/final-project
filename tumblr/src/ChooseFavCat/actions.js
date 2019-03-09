@@ -1,6 +1,7 @@
 import {
     LOAD_CATEGORIES,
     NEW_CATEGORY,
+    ADD_ME,
 } from './actionTypes';
 
 export const loadCategories = () => {
@@ -9,9 +10,10 @@ export const loadCategories = () => {
     }
 }
 
-export const addNewCategory = newCategory => {
+export const addNewCategory = title => {
     return {
         type: NEW_CATEGORY,
-        newCategory,
+        title,
     }
 }
+
