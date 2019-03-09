@@ -1,13 +1,30 @@
-import { 
-    ADD_NEW_USER, 
+import {
+    SET_USERS_LIST,
+    SET_LOGGED_USER_DETAILS,
+    ADD_NEW_USER,
     USER_LOGIN,
     USER_LOGOUT,
-    CURRENT_USER } from './actionTypes';
+    CURRENT_USER,
+    ON_TOGGLE_LIKE
+} from './actionTypes';
 
+export const setUsersList = payload => {
+    return {
+        type: SET_USERS_LIST,
+        payload
+    }
+}
+
+export const setLoggedUserDetails = payload => {
+    return {
+        type: SET_LOGGED_USER_DETAILS,
+        payload
+    }
+}
 
 export const addNewUser = newUser => {
     return {
-        type: ADD_NEW_USER, 
+        type: ADD_NEW_USER,
         newUser
     }
 }
@@ -20,7 +37,7 @@ export const onLogin = user => {
 }
 
 export const logOutUser = () => {
-    return{
+    return {
         type: USER_LOGOUT,
     }
 }
@@ -31,3 +48,12 @@ export const logOutUser = () => {
 //         user,
 //     }
 // }
+
+
+export const onLikedAction = payload => {
+    console.log('onLikedAction', payload)
+    return {
+        type: ON_TOGGLE_LIKE,
+        payload
+    }
+}

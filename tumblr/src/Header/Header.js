@@ -7,11 +7,12 @@ import Button from '../UI/Button/Button';
 const header = props => (
 
     <header>
+        this one!
         <div className = {classes.container}>
             <div className={classes.Logo}>
                 <img src={require('../assets/images/tumblr-logo.png')} />
             </div>
-            <Input type="text" placeholder=" 🔍 Search tumblr" />
+            {/* <Input type="text" placeholder=" 🔍 Search tumblr" /> */}
 
             </div>
                 <nav>

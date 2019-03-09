@@ -19,7 +19,7 @@ class Login extends Component {
 
     goToLogin = event => {
         event.preventDefault();
-        this.props.history.replace('/login');
+        this.props.history.push('/login');
     }
 
     render() {

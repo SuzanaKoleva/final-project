@@ -17,7 +17,6 @@ class PrimaryDashboardActions extends Component {
 
     componentDidMount() {
 
-        window.a = this;
     }
 
     render() {

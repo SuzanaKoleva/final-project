@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classes from './index.module.css'
 
 import { setSelectedCategory } from '../App/actions';
+import { logOutUser } from '../Users/actions/actions';
 
 
 class AuthHeader extends Component {
@@ -22,6 +23,13 @@ class AuthHeader extends Component {
 
         this.props.history.push(`/category/${event.target.value}`);
     }    
+
+    logOut() {
+
+        this.props.triggerLogOutUser();
+        
+        this.props.history.push('/landing');
+    }
 
     render() {
 
@@ -43,7 +51,9 @@ class AuthHeader extends Component {
 
                     <div>
                         <button>🏠</button>
-                        <button>👤</button>
+                        <button >👤</button>
+                        <button onClick={() => this.logOut()}>Log Out</button>
+                        
                     </div>
                 </div>
             </header>
@@ -66,7 +76,8 @@ const mapDispatchToProps = dispatch => {
 
     return {
 
-        triggerSetSelectedCategory: (type) => dispatch(setSelectedCategory(type))
+        triggerSetSelectedCategory: (type) => dispatch(setSelectedCategory(type)),
+        triggerLogOutUser: () => dispatch(logOutUser())
     }
 }
 

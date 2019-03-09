@@ -19,7 +19,7 @@ const inputStyles = {
 class Login extends React.Component{
 
     state = {
-        findUser: {
+        userCredentials: {
             email: '',
             password: '',
         }
@@ -27,9 +27,9 @@ class Login extends React.Component{
 
     setEmail = event => {
         const value = event.target.value;
-        const findUser = {...this.state.findUser};
-        findUser.email = value;
-        this.setState({ findUser });
+        const userCredentials = {...this.state.userCredentials};
+        userCredentials.email = value;
+        this.setState({ userCredentials });
     }
 
     checkEmail = email => {
@@ -38,9 +38,9 @@ class Login extends React.Component{
 
     setPassword = event => {
         const value = event.target.value;
-        const findUser = {...this.state.findUser};
-        findUser.password = value;
-        this.setState({ findUser });
+        const userCredentials = {...this.state.userCredentials};
+        userCredentials.password = value;
+        this.setState({ userCredentials });
     }
 
     checkPassword = password => {
@@ -50,11 +50,27 @@ class Login extends React.Component{
     onLoginUser = event => {
         event.preventDefault();
         console.log(this.props.users);
-        let findMe = this.props.users.find(user => user.email === this.state.findUser.email
-            && user.password === this.state.findUser.password);
-        this.props.onLogin(findMe);
+        let foundUser = this.props.users.find(user => user.email === this.state.userCredentials.email
+            && user.password === this.state.userCredentials.password);
+        
+        /**
+         * TODO: Display error messages here!
+         */
+        if (!foundUser) {
 
-        sessionStorage.setItem('currnetUser', findMe.email);
+            console.error('No user found: ', this.state.userCredentials);
+            return;
+        }   
+
+        this.props.triggerOnLogin(foundUser);
+
+        const userData = {
+
+            ...foundUser
+        };
+
+        sessionStorage.setItem('user', JSON.stringify(userData));
+        
         this.props.history.push('/');
     }
 
@@ -69,10 +85,10 @@ class Login extends React.Component{
                 <h1>tumblr</h1>
                 <form>
                     <div style={myStyles}>
-                         <Input onChange={this.setEmail} value={this.state.findUser.email}
+                         <Input onChange={this.setEmail} value={this.state.userCredentials.email}
                             style={inputStyles} type="input" placeholder="Email"/>
 
-                        <Input onChange={this.setPassword} value={this.state.findUser.password}
+                        <Input onChange={this.setPassword} value={this.state.userCredentials.password}
                             style={inputStyles} type="password" placeholder="Password"/>
                         <Button onClick={this.onLoginUser} style={inputStyles} title="Log in"/>
                         <Button onClick={this.goToRegister} style={inputStyles} title="New register"/>
@@ -82,10 +98,20 @@ class Login extends React.Component{
     }
 }
 
+const mapStateToProps = (state) => {
+
+    const { userReducer } = state;
+    
+    return {
+
+        users: userReducer.users
+    }
+};
+
 const mapDispatchToProps = dispatch => {
     return {
-        onLoginUser: user => dispatch(onLogin(user))
+        triggerOnLogin: user => dispatch(onLogin(user))
     }
 } 
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
