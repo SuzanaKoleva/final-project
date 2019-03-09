@@ -3,6 +3,8 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { onLogin } from '../Users/actions/actions';
 import { connect } from 'react-redux';
+import classes from './loginRegister.module.css';
+import Header from '../Header/Header';
 
 const myStyles = {
     display: 'flex',
@@ -13,6 +15,11 @@ const myStyles = {
 const inputStyles = {
     marginBottom: '10px',
     padding: '12px',
+    width: '270px',
+}
+const fields = {
+    padding: '15px',
+    marginBottom: '10px',
     width: '270px',
 }
 
@@ -81,15 +88,16 @@ class Login extends React.Component{
 
     render() {
         return (
-            <div>
+            <div className={classes.container}>
+                <Header />
                 <h1>tumblr</h1>
                 <form>
                     <div style={myStyles}>
                          <Input onChange={this.setEmail} value={this.state.userCredentials.email}
-                            style={inputStyles} type="input" placeholder="Email"/>
+                            style={fields} className={classes.fields} type="input" placeholder="Email"/>
 
                         <Input onChange={this.setPassword} value={this.state.userCredentials.password}
-                            style={inputStyles} type="password" placeholder="Password"/>
+                            style={fields} className={classes.fields} type="password" placeholder="Password"/>
                         <Button onClick={this.onLoginUser} style={inputStyles} title="Log in"/>
                         <Button onClick={this.goToRegister} style={inputStyles} title="New register"/>
                         </div>

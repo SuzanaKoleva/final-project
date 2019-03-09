@@ -5,7 +5,16 @@ import classes from './index.module.css'
 
 import { setSelectedCategory } from '../App/actions';
 import { logOutUser } from '../Users/actions/actions';
+import Button from '../UI/Button/Button';
 
+const buttonStyles = {
+    color: '#333',
+    backgroundColor: '#fff',
+}
+
+const icons = {
+    backgroundColor: 'rgba(0,0,0,0)',
+}
 
 class AuthHeader extends Component {
     constructor(props) {
@@ -50,9 +59,12 @@ class AuthHeader extends Component {
 
 
                     <div>
-                        <button>🏠</button>
-                        <button >👤</button>
-                        <button onClick={() => this.logOut()}>Log Out</button>
+                        {/* <button>🏠</button>
+                        <button >👤</button> */}
+                        {/* <button onClick={() => this.logOut()}>Log Out</button> */}
+                        <Button style={icons} title="🏠"/>
+                        <Button style={icons} title="👤"/>
+                        <Button onClick={() => this.logOut()} style={buttonStyles} title="Log Out"/>
                         
                     </div>
                 </div>
