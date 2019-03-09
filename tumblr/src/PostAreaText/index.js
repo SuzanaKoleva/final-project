@@ -65,34 +65,34 @@ class PostAreaText extends Component {
             <section className={classes.container}>
                 
                 <input 
-                    className="titleInput" 
+                    className={classes.titleInput}
                     type="text" 
                     placeholder="Title"
                     value={this.state.titleInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'titleInputValue')}/>
 
                 <textarea 
-                    className="descriptionInput" 
+                    className={classes.descriptionInput}
                     type="text" 
                     placeholder="Your text here"
                     value={this.state.descriptionInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'descriptionInputValue')}></textarea>
                 <input 
-                    className="hashtagsInput" 
+                    className={classes.hashtagsInput}
                     type="text" 
                     placeholder="#tags"
                     value={this.state.tagsInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'tagsInputValue')}/>
 
 
-                <select className={classes.selectContainer} onChange={(evt) => this.updateInputValue(evt, 'selectedCategoryValue')} value={this.state.selectedCategory}>
+                <select className={classes.selectCategory} onChange={(evt) => this.updateInputValue(evt, 'selectedCategoryValue')} value={this.state.selectedCategory}>
                 
                     <option value=''>Select category...</option>
                     {categoryOptions.map((option, i) => <option value={option} key={i}>{option}</option>)}
                 </select>
                     
 
-                <footer>
+                <footer className = {classes.footerContainer}>
                     
                     <button className={classes.buttonClose} onClick={() => this.props.triggerOnAddPostModalClose()}>Close</button>
                     <button className={classes.buttonPost} onClick={() => this.submitPost()}>Post</button>

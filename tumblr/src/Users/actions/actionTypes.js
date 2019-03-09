@@ -1,4 +1,7 @@
+export const SET_USERS_LIST = 'SET_USERS_LIST';
+export const SET_LOGGED_USER_DETAILS = 'SET_LOGGED_USER_DETAILS';
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const CURRENT_USER = 'CURRENT_USER';
+export const ON_TOGGLE_LIKE = 'ON_TOGGLE_LIKE';

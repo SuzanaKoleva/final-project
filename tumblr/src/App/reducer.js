@@ -1,9 +1,10 @@
 
 
-import { SET_SELECTED_CATEGORY } from './constants';
+import { SET_INITIAL_APP_STATE_READY, SET_SELECTED_CATEGORY, LOG_OUT } from './constants';
 
 const initialState = {
 
+    isInitialAppStateReady: false,
     categoryOptions: {
         pets: {
             name: 'pets'
@@ -33,6 +34,15 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
+        
+        case SET_INITIAL_APP_STATE_READY: {
+                
+            return {
+                ...state,
+                isInitialAppStateReady: true
+            };
+        }
+
         case SET_SELECTED_CATEGORY: {
 
             const newSelectedCategory = state.categoryOptions[action.payload] ?
@@ -43,6 +53,7 @@ const reducer = (state = initialState, action) => {
                 selectedCategory: newSelectedCategory
             };
         }
+        
 
         default: return state;
     }

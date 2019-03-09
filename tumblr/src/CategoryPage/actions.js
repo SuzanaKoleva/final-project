@@ -1,12 +1,20 @@
 import { 
+    SET_CATEGORIES_DATA,
     LOAD_POSTS,
     ON_FOLLOW,
     ON_SHARE,
-    ON_LIKE,
     ON_REBLOG,
     ADD_POST_TO_CATEGORY
 } from './constants';
 
+
+
+export const setCategoriesData = payload => {
+    return {
+        type: SET_CATEGORIES_DATA, 
+        payload
+    }
+}
 
 export const loadPosts = newPosts => {
     return {
@@ -31,12 +39,6 @@ export const onShareAction = objPropIndex => {
     }
 }
 
-export const onLikedAction = objpayload => {
-    return {
-        type: ON_LIKE,
-        payload:objpayload
-    }
-}
 
 export const onReblogAction = objpayload => {
     return {

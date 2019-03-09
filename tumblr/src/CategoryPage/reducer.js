@@ -1,9 +1,8 @@
 import { 
-    SET_SELECTED_CATEGORY_NAME, 
+    SET_CATEGORIES_DATA,
     LOAD_POSTS, 
     ON_FOLLOW, 
     ON_SHARE, 
-    ON_LIKE, 
     ON_REBLOG,
     ADD_POST_TO_CATEGORY
 } from './constants';
@@ -16,6 +15,7 @@ const initialState = {
             posts: [
                 {
 
+                    id: 1,
                     title: 'Flight',
                     imgSrc: 'https://www.incimages.com/uploaded_files/image/970x450/getty_583734066_335273.jpg',
                     description: 'I am flying',
@@ -37,6 +37,7 @@ const initialState = {
         pets: {
             posts: [
                 {
+                    id: 2,
                     title: 'Pets',
                     imgSrc: 'https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg',
                     description: 'I am a dog',
@@ -57,6 +58,7 @@ const initialState = {
         sports: {
             posts: [
                 {
+                    id: 3,
                     title: 'voleyball ',
                     imgSrc: 'https://www.freepngimg.com/thumb/volleyball/5-2-volleyball-png-clipart-thumb.png',
                     description: 'I am flying',
@@ -77,6 +79,7 @@ const initialState = {
         home: {
             posts: [
                 {
+                    id: 4,
                     title: 'Flight',
                     imgSrc: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi6tP3Bie7gAhWG16QKHZTMBjMQjRx6BAgBEAU&url=https%3A%2F%2Fwww.travelmarketreport.com%2Farticles%2FHeres-Why-You-Should-Use-A-Travel-Agent-Instead-Of-Booking-Online&psig=AOvVaw1Fqwz7fFv1khpiQ76saGYe&ust=1551980893481517',
                     description: 'I am flying',
@@ -97,6 +100,7 @@ const initialState = {
         beauty: {
             posts: [
                 {
+                    id: 5,
                     title: 'Flight',
                     imgSrc: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi6tP3Bie7gAhWG16QKHZTMBjMQjRx6BAgBEAU&url=https%3A%2F%2Fwww.travelmarketreport.com%2Farticles%2FHeres-Why-You-Should-Use-A-Travel-Agent-Instead-Of-Booking-Online&psig=AOvVaw1Fqwz7fFv1khpiQ76saGYe&ust=1551980893481517',
                     description: 'I am flying',
@@ -121,6 +125,14 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
+        
+        case SET_CATEGORIES_DATA: {
+
+            return {
+                ...state,
+                categories: action.payload ? { ...action.payload } : state.categories
+            };
+        }
 
         case LOAD_POSTS: {
 
@@ -224,50 +236,7 @@ console.log(action.payload)
             };
         }
 
-        case ON_LIKE: {
-            console.log(111111111111111111)
-            console.log(state.categories[state.selectedCategory].posts[action.payload.postIndex])
-            console.log(state.categories[state.selectedCategory].posts[0])
-           
-            const currentPost = state.categories[state.selectedCategory].posts[action.payload.postIndex];
 
-            const currentIsLiked = currentPost.isLiked;
-            console.log(currentIsLiked + '11111111111111' )
-            const updatedPost = {
-                ...currentPost,
-                isLiked: !currentIsLiked,
-                // !currentIsLiked,
-            }
-            
-            console.log(updatedPost)
-            
-            if (updatedPost.isLiked) {
-                updatedPost.backgroundColor = 'blue'
-
-            } else {
-                updatedPost.backgroundColor = 'red'
-            }
-
-            const updatedPosts = [...state.categories[state.selectedCategory].posts];
-            
-            updatedPosts.splice(action.payload.postIndex, 1, updatedPost);
-            
-            const updatedCategories = {
-
-                ...state.categories,
-                [state.selectedCategory]: {
-
-                    ...[state.selectedCategory],
-                    posts: updatedPosts
-                }
-            }
-
-            return {
-                ...state,
-
-                categories: updatedCategories
-            }
-        }
         case ON_REBLOG: {
            
             const currentisRebloged = state.posts[action.payload.postIndex].isRebloged;

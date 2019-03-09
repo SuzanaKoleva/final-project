@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { addNewUser } from '../Users/actions/actions';
+import { addNewUser, setUsersList } from '../Users/actions/actions';
 import { connect } from 'react-redux';
 
 
@@ -17,19 +17,53 @@ const inputStyles = {
     width: '270px',
 }
 
-let id = 2;
 
 class Register extends React.Component{
 
     state = {
+
+        availableAvatars: [
+            'http://admission.igntuonline.in/dist/img/UserImage.jpg',
+            'https://iboostlol.com/boostpanel/assets/img/avatars/0.png',
+            'https://www.infrascan.net/demo/assets/img/avatar5.png',
+            'https://amploprod.s3.amazonaws.com/assets/no-user-image-square-9f6a473a32ad639f619216331d10d61ce1b35c9271d5683920960e1a5ee45bb8.jpg',
+            'http://www.harrisonscave.com/public/img/frontend/user.png'
+        ],
+        defaultValues: {
+            username: '',
+            email: '',
+            password: '',
+            id: 0,
+            profileImg: '',
+            likedPosts: {},
+
+            // TODO: to be deleted
+            // followed: [],
+            // categories: [],
+            // posts: []
+        },
+
         newUser: {
             username: '',
             email: '',
             password: '',
-            followed: [],
-            categories: [],
-            posts: [],
+            id: 0,
+            profileImg: '',
+            likedPosts: {},
+
+
+
+            // TODO: to be deleted
+            // followed: [],
+            // categories: [],
+            // posts: [],
+
         },
+    }
+
+    componentDidMount() {
+        
+        window.r = this;
     }
 
     setUsername = event => {
@@ -87,13 +121,35 @@ class Register extends React.Component{
         event.preventDefault();
         const hasErrors = this.validation();
         if(!hasErrors){
-            this.state.newUser.userId = ++id;
+            
             this.props.addNewUser(this.state.newUser);
             console.log(this.props);
 
-            const newUser = {username: '', email: '', password: ''};
-            this.setState({ newUser });
-            this.props.history.replace('/login');
+
+            
+
+
+            const updatedUsersList = [...this.props.users];
+
+            const lastUserdId = this.props.users[this.props.users.length - 1].id;
+
+            const randomAvatarIndex = Math.floor(Math.random() * this.state.availableAvatars.length);
+
+            updatedUsersList.push({
+                ...this.state.newUser,
+                id: lastUserdId + 1,
+                profileImg: this.state.availableAvatars[randomAvatarIndex]
+            });
+
+            this.props.triggerSetUsersList(updatedUsersList);
+
+             
+
+            this.setState({ newUser: {
+                ...this.state.defaultValues
+            }});
+
+            this.props.history.push('/login');
             console.log('uspeh');   
         }else{
             console.log('grehska');
@@ -125,14 +181,18 @@ class Register extends React.Component{
     }
 }
 const mapStateToProps = state => {
+
+    const { userReducer } = state;
+    
     return {
-        users: state.users
+        users: userReducer.users
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addNewUser: newUser => dispatch(addNewUser(newUser))
+        addNewUser: newUser => dispatch(addNewUser(newUser)),
+        triggerSetUsersList: (users) => dispatch(setUsersList(users))
     }
 }
 

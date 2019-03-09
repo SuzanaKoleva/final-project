@@ -12,7 +12,8 @@ import AuthHeader from '../AuthHeader'
 
 
 import { setSelectedCategory } from '../App/actions';
-import { onFollowAction, onShareAction, onLikedAction, onReblogAction } from '../CategoryPage/actions';
+import { onFollowAction, onShareAction, onReblogAction } from '../CategoryPage/actions';
+import { onLikedAction } from '../Users/actions/actions';
 
 import {
     onAddPostModalClose
@@ -86,9 +87,10 @@ class Dashboard extends Component {
 
                         key={i}
                         propsObj={post}
+                        userDetails={this.props.userDetails}
                         onFollowBtnClick={() => this.props.dispatchOnFollowAction(i)}
                         onShareBtnClick={() => this.props.dispatchOnShareAction(i)}
-                        onLikedBtnClick={() => this.props.dispatchOnLikedAction(i)}
+                        onLikedBtnClick={() => this.props.dispatchOnLikedAction(post.id)}
                         onReblogBtnClick={() => this.props.dispatchOnReblogAction(i)} />)}
                 </main>
             </div>
@@ -98,7 +100,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
 
-    const { categoryReducer, primaryDashboardActionsReducer, appReducer } = state;
+    const { categoryReducer, primaryDashboardActionsReducer, appReducer, userReducer } = state;
 
     return {
 
@@ -107,7 +109,9 @@ const mapStateToProps = (state) => {
         isModalOpened: primaryDashboardActionsReducer.isModalOpened,
         availablePostTypes: primaryDashboardActionsReducer.availablePostTypes,
         postTypeOpened: primaryDashboardActionsReducer.postTypeOpened,
-        categoryOptions: appReducer.categoryOptions
+        categoryOptions: appReducer.categoryOptions,
+        
+        userDetails: userReducer.currentUser
     }
 };
 
@@ -121,9 +125,7 @@ const mapDispatchToProps = dispatch => {
         dispatchOnShareAction: (someIndexNumber) => dispatch(onShareAction({
             postIndex: someIndexNumber
         })),
-        dispatchOnLikedAction: (someIndexNumber) => dispatch(onLikedAction({
-            postIndex: someIndexNumber
-        })),
+        dispatchOnLikedAction: (postId) => dispatch(onLikedAction(postId)),
         dispatchOnReblogAction: (someIndex) => dispatch(onReblogAction({
             postIndex: someIndex
         })),
