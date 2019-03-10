@@ -9,11 +9,17 @@ class ShowTumblrBlogs extends Component {
             <div className={classes.container}>
                 <Header />
                 <div className={classes.content}>
-                    <h1>Tumblr is blogs.</h1>
-                    <p>Turns out that when you make it easy to create interesting things, 
-                        that’s exactly what people do. All those great, random blogs your 
-                        friends send you, those are Tumblr blogs. We’ll help you find and 
-                        follow blogs like that, and we’ll help other people find and follow yours.
+                    <h1>Кои сме ние и как се разпределихме?</h1>
+                    <br />
+                    <p>
+                        <strong>Сузана Колева</strong> и <strong>Георги Керанов</strong>
+                        <br />
+                        <br />
+                        Сузана - компоненти за Категории и Постове, начална страница след логване, публикуване на пост, 
+                        снимка и цитат от потребител, css/responsive design.
+                        <br />
+                        <br />
+                        Георги - регистрация и логин на потребител, начална страница преди логин, css/responsive design.
                     </p>
                 </div>
                 <div className={classes.imgContainer}>
