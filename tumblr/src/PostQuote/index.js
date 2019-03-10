@@ -49,7 +49,7 @@ class PostQuote extends Component {
             },
 
             userData: {
-                postetFromUserId: this.props.user.id,
+                postedFromUserId: this.props.user.id,
                 username: this.props.user.username,
                 userImgSrc: this.props.user.profileImg,
             }

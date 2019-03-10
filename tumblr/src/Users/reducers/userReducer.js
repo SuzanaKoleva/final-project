@@ -26,8 +26,9 @@ const initialState = {
 
             followedPost: {
                 1: {},
-            }
+            },
 
+           personalPosts: []
 
 
 
@@ -49,7 +50,9 @@ const initialState = {
             },
             followedPost: {
                 1: {},
-            }
+            },
+
+        
 
 
             // followed: [],
@@ -104,6 +107,7 @@ const reducer = (state = initialState, action) => {
                 { ...state, currentUser: null }
             )
         }
+     
 
         // case CURRENT_USER:{
         //     return (

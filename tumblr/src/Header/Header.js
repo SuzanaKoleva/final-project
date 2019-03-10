@@ -7,7 +7,7 @@ import Button from '../UI/Button/Button';
 const header = props => (
 
     <header>
-        this one!
+        
         <div className = {classes.container}>
             <div className={classes.Logo}>
                 <img src={require('../assets/images/tumblr-logo.png')} />

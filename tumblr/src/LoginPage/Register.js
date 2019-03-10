@@ -38,6 +38,7 @@ class Register extends React.Component{
             profileImg: '',
             likedPosts: {},
             followedPost: {},
+            personalPosts: []
 
             // TODO: to be deleted
             // followed: [],
@@ -53,6 +54,7 @@ class Register extends React.Component{
             profileImg: '',
             likedPosts: {},
             followedPost: {},
+            personalPosts: []
 
 
 

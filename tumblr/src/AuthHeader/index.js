@@ -32,6 +32,9 @@ class AuthHeader extends Component {
 
         this.props.history.push(`/category/${event.target.value}`);
     }
+    goToDashboard() {
+        this.props.history.push('/dashboard')
+    }
 
     logOut() {
 
@@ -60,10 +63,10 @@ class AuthHeader extends Component {
 
                     <div className={classes.navContainer}>
                         <div>
-                            <button className={classes.btnDashboard}>🏠</button>
+                            <button className={classes.btnDashboard} onClick = {() => this.goToDashboard()}>🏠</button>
                             <button className={classes.btnAccount}>👤</button>
                         </div>
-                        <button className={classes.btnLogOut} onClick={() => this.logOut()}>Log Out</button>
+                        <button className={classes.btnLogOut} onClick={() => this.logOut() }>Log Out</button>
 
                     </div>
                 </div>
@@ -88,7 +91,7 @@ const mapDispatchToProps = dispatch => {
     return {
 
         triggerSetSelectedCategory: (type) => dispatch(setSelectedCategory(type)),
-        triggerLogOutUser: () => dispatch(logOutUser())
+        triggerLogOutUser: () => dispatch(logOutUser()),
     }
 }
 
