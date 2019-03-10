@@ -43,3 +43,12 @@
     width: 25px;
     height: 25px;
   }
+
+  @media (max-width: 670px) {
+    header{
+      height: 75px;
+    }
+    header > nav{
+      width: 100px;
+    }
+  }

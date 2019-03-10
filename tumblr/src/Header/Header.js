@@ -14,7 +14,7 @@ const header = props => (
             </div>
             {/* <Input type="text" placeholder=" 🔍 Search tumblr" /> */}
 
-            </div>
+        </div>
                 <nav>
                     {/* <NavLink to='/profile'><img  className={classes.profileIcon} src='https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-512.png'/></NavLink> */}
                     <NavLink to="/login" className={classes.NavButton} >Sign up</NavLink>
