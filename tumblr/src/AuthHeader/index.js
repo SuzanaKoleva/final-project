@@ -27,23 +27,23 @@ class AuthHeader extends Component {
     }
 
     redirectToCategory(event) {
-        
+
         this.props.triggerSetSelectedCategory(event.target.value);
 
         this.props.history.push(`/category/${event.target.value}`);
-    }    
+    }
 
     logOut() {
 
         this.props.triggerLogOutUser();
-        
+
         this.props.history.push('/landing');
     }
 
     render() {
 
         const categoryOptions = Object.keys(this.props.categoryOptions);
-       
+
         return (
 
 
@@ -58,18 +58,17 @@ class AuthHeader extends Component {
                     </select>
 
 
-                    <div>
-                        {/* <button>🏠</button>
-                        <button >👤</button> */}
-                        {/* <button onClick={() => this.logOut()}>Log Out</button> */}
-                        <Button style={icons} title="🏠"/>
-                        <Button style={icons} title="👤"/>
-                        <Button onClick={() => this.logOut()} style={buttonStyles} title="Log Out"/>
-                        
+                    <div className={classes.navContainer}>
+                        <div>
+                            <button className={classes.btnDashboard}>🏠</button>
+                            <button className={classes.btnAccount}>👤</button>
+                        </div>
+                        <button className={classes.btnLogOut} onClick={() => this.logOut()}>Log Out</button>
+
                     </div>
                 </div>
             </header>
-                
+
         )
     }
 }

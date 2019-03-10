@@ -15,7 +15,7 @@ import {
 } from '../PrimaryDashboardActions/actions';
 
 
-class PostAreaText extends Component {
+class PostPhoto extends Component {
     constructor(props) {
 
         super(props);
@@ -24,7 +24,8 @@ class PostAreaText extends Component {
             titleInputValue: '',
             descriptionInputValue: '',
             tagsInputValue: '',
-            selectedCategoryValue: ''
+            selectedCategoryValue: '',
+            url: ''
         };
     }
 
@@ -42,12 +43,14 @@ class PostAreaText extends Component {
             postData: {
                 title: this.state.titleInputValue,
                 description: this.state.descriptionInputValue,
-                tags: [this.state.tagsInputValue]
+                tags: [this.state.tagsInputValue],
+                imgSrc: this.state.url
             },
+
             userData: {
-                postedFromUserId: this.props.loggedUser.id,
-                userImgSrc: this.props.loggedUser.profileImg,
-                username: this.props.loggedUser.username,
+                postetFromUserId: this.props.user.id,
+                username: this.props.user.username,
+                userImgSrc: this.props.user.profileImg,
             }
         });
 
@@ -68,13 +71,18 @@ class PostAreaText extends Component {
 
 
             <section className={classes.container}>
-                <div className = {classes.boxTextTitleTags}>
+                
                 <input 
                     className={classes.titleInput}
                     type="text" 
                     placeholder="Title"
                     value={this.state.titleInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'titleInputValue')}/>
+                <input 
+                type="text"
+                placeholder="Paste a URL"
+                onChange={evt => this.updateInputValue(evt, 'url')}/> 
+                <img src = {this.state.url} style = {{height: '200px'}}/>   
 
                 <textarea 
                     className={classes.descriptionInput}
@@ -88,7 +96,7 @@ class PostAreaText extends Component {
                     placeholder="#tags"
                     value={this.state.tagsInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'tagsInputValue')}/>
-            </div>
+
 
                 <select className={classes.selectCategory} onChange={(evt) => this.updateInputValue(evt, 'selectedCategoryValue')} value={this.state.selectedCategory}>
                 
@@ -111,13 +119,13 @@ class PostAreaText extends Component {
 
 const mapStateToProps = (state) => {
 
-    const { postAreaTextReducer, appReducer, userReducer } = state;
+    const { postPhotoReducer, appReducer, userReducer } = state;
     
     return {
 
-        availablePostTypes: postAreaTextReducer.availablePostTypes,
+        availablePostTypes: postPhotoReducer.availablePostTypes,
         categoryOptions: appReducer.categoryOptions,
-        loggedUser: userReducer.currentUser
+        user: userReducer.currentUser
     }
 };
 
@@ -129,4 +137,4 @@ const mapDispatchToProps = dispatch => {
     }
 } 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostAreaText)
+export default connect(mapStateToProps, mapDispatchToProps)(PostPhoto)

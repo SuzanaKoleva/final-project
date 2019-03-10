@@ -7,7 +7,8 @@ import {
     CURRENT_USER,
 
 
-    ON_TOGGLE_LIKE
+    ON_TOGGLE_LIKE,
+    ON_TOGGLE_FOLLOW
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -22,6 +23,10 @@ const initialState = {
                 1: {},
                 4: {},
             },
+
+            followedPost: {
+                1: {},
+            }
 
 
 
@@ -42,6 +47,9 @@ const initialState = {
                 2: {},
                 3: {},
             },
+            followedPost: {
+                1: {},
+            }
 
 
             // followed: [],
@@ -104,11 +112,12 @@ const reducer = (state = initialState, action) => {
         // }
 
         case ON_TOGGLE_LIKE: {
-            console.log('onlike reducer', action.payload)
+            
 
             const postId = action.payload;
-
+            console.log(postId)
             const currentIsLikedState = state.currentUser.likedPosts[postId];
+            console.log(currentIsLikedState)
 
             const newLikedPosts = { 
                 ...state.currentUser.likedPosts,
@@ -139,10 +148,54 @@ const reducer = (state = initialState, action) => {
                 currentUser: updatedUser,
                 users: updatedUsers
             }
+        }  
+
+
+
+          case ON_TOGGLE_FOLLOW: {
+            console.log('follow reducer', action.payload)
+    
+            const postId = action.payload;
+            console.log(postId)
+            const currentIsFollowState = state.currentUser.followedPost[postId];
+            console.log(state.currentUser.followedPost)
+            
+            const newFollowedPost = { 
+                ...state.currentUser.followedPost,
+                [postId]: currentIsFollowState ? false : {}
+            };
+    
+            const updatedUser = {
+                ...state.currentUser,
+                followedPost: newFollowedPost
+            };
+    
+
+            // Simulate BE updating the users list 
+            let userIndex = 0;
+    
+            for (var i = 0; i < state.users.length; i++) {
+    
+                if (state.users[i].id === state.currentUser.id) {
+    
+                    userIndex = i;
+                    break;
+                }
+            }
+            
+            const updatedUsers = [...state.users];
+            updatedUsers.splice(userIndex, 1, updatedUser)
+
+            return {
+                ...state,
+                currentUser: updatedUser,
+                users: updatedUsers
+            }
         }
 
         default: return state;
     }
+
 }
 
 export default reducer;

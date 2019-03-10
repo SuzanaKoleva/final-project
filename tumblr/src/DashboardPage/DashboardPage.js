@@ -9,11 +9,15 @@ import PrimaryDashboardActions from '../PrimaryDashboardActions'
 import PostComponent from '../PostComponent/PostComponent'
 import PostAreaText from '../PostAreaText'
 import AuthHeader from '../AuthHeader'
+import PostPhoto from '../PostPhoto'
+import PostQuote from '../PostQuote'
 
 
 import { setSelectedCategory } from '../App/actions';
-import { onFollowAction, onShareAction, onReblogAction } from '../CategoryPage/actions';
+import { onShareAction, onReblogAction } from '../CategoryPage/actions';
 import { onLikedAction } from '../Users/actions/actions';
+import { onFollowAction } from '../Users/actions/actions';
+
 
 import {
     onAddPostModalClose
@@ -44,18 +48,73 @@ class Dashboard extends Component {
 
         let feedPosts = [];
         
-            for (let key in this.props.categories) {
-                console.log(this.props.categories[key])
-                feedPosts = feedPosts.concat(this.props.categories[key].posts);
-            }
+        for (let key in this.props.categories) {
+            console.log(this.props.categories[key])
+            
 
-        console.log(feedPosts);
+            feedPosts = feedPosts.concat(this.props.categories[key].posts);
+        }
         
+        let newPostComponentType;
+
+        switch(this.props.postTypeOpened) {
+
+            case 'text':
+                newPostComponentType = <PostAreaText/>;
+                break;
+
+            case 'photos':
+                newPostComponentType = <PostPhoto/>;
+                break;
+
+            case 'quote':
+                newPostComponentType = <PostQuote/>;
+                break;
+
+            default:
+                newPostComponentType = <PostAreaText/>;
+        }
+
         return (
 
             <div className={classes.container}>
                 <AuthHeader history={this.props.history} location={this.props.history}/>
  
+                <Modal
+                    isOpen={this.props.isModalOpened}
+                    
+                    shouldCloseOnOverlayClick={true}
+                    onRequestClose={this.props.triggerOnAddPostModalClose}
+                    className = {classes.Modal}
+                    // #
+                    style={{
+                        overlay: {
+                            backgroundColor: '#001935f2'
+                        },
+                        // content: {
+                        //     top: '90px',
+                        //     left: '90px',
+                        //     width: '540px',
+                        //     height: '300px'
+                        // }
+                        
+                    }}
+                >
+                    
+                    { newPostComponentType }
+                {/* {
+                    if (this.props.postTypeOpened) {
+
+                    }
+                } */}
+                    {/* diff the components inside the modal based on this prop <h1>{this.props.availablePostTypes[this.props.postTypeOpened].label}</h1> */}
+                    {/* <span>{ this.props.availablePostTypes[this.props.postTypeOpened] }</span> */}
+                    {/* <PostAreaText postType={this.props.availablePostTypes[this.props.postTypeOpened]} />
+                    
+                    <PostPhoto postType={this.props.availablePostTypes[this.props.postTypeOpened]} /> */}
+                </Modal>
+
+{/*                          
                 <Modal
                     isOpen={this.props.isModalOpened}
                     shouldCloseOnOverlayClick={true}
@@ -73,10 +132,12 @@ class Dashboard extends Component {
                         }
                         }}
                 >
-                    {/* diff the components inside the modal based on this prop <h1>{this.props.availablePostTypes[this.props.postTypeOpened].label}</h1> */}
+                    {/* diff the components inside the modal based on this prop <h1>{this.props.availablePostTypes[this.props.postTypeOpened].label}</h1> 
 
-                    <PostAreaText postType={this.props.availablePostTypes[this.props.postTypeOpened]} />
-                </Modal>
+                    <PostPhoto postType={this.props.availablePostTypes[this.props.postTypeOpened]} />
+                </Modal> */}
+
+
                 <main className={classes.feedContainer}>
                     <PrimaryDashboardActions />
 
@@ -88,10 +149,8 @@ class Dashboard extends Component {
                         key={i}
                         propsObj={post}
                         userDetails={this.props.userDetails}
-                        onFollowBtnClick={() => this.props.dispatchOnFollowAction(i)}
-                        onShareBtnClick={() => this.props.dispatchOnShareAction(i)}
-                        onLikedBtnClick={() => this.props.dispatchOnLikedAction(post.id)}
-                        onReblogBtnClick={() => this.props.dispatchOnReblogAction(i)} />)}
+                        onFollowBtnClick={() => this.props.dispatchOnFollowAction(post.id)}
+                        onLikedBtnClick={() => this.props.dispatchOnLikedAction(post.id)} />)}
                 </main>
             </div>
         )
@@ -118,9 +177,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        dispatchOnFollowAction: (someIndexNumber) => dispatch(onFollowAction({
-            postIndex: someIndexNumber
-        })),
+        dispatchOnFollowAction: (postId) => dispatch(onFollowAction(postId)),
 
         dispatchOnShareAction: (someIndexNumber) => dispatch(onShareAction({
             postIndex: someIndexNumber
