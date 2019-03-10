@@ -4,7 +4,31 @@
     min-height: 100vh;
     width: 100vw;
 }
-/* @media (min-width: ) */
+@media (max-width: 1024px) {
+    .container{
+        font-size: 1.5em;
+    }
+}
+@media (max-width: 768px) {
+    .container{
+        font-size: 1.15em;
+    }
+}
+@media (max-width: 414px) {
+    .container{
+        font-size: 0.8em;
+    }
+}
+@media (max-width: 375px) {
+    .container{
+        font-size: 0.7em;
+    }
+}
+@media (max-width: 320px) {
+    .container{
+        font-size: 0.6em;
+    }
+}
 .content{
     display: flex;
     flex-direction: column;

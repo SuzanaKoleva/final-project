@@ -13,10 +13,11 @@ class ShowTumblr extends Component{
                         <img src={require('./blog.png')}/>
                     </div>
                     <div className={classes.text}>
-                        <h1>You already know how this works.</h1>
-                        <p>Once you follow a blog, all of its posts show up in your dashboard, just like you’d expect. 
-                            See something great? Reblog it to your own blog. Add commentary if you like. Make it your
-                             own. Other people will do the same to your posts. That’s how you meet people here.
+                        <h1>Tumblr is so easy to use that it’s hard to explain.</h1>
+                        <p>We made it really, really simple for people to make a blog and put whatever they want on it.
+                             Stories, photos, GIFs, TV shows, links, quips, dumb jokes, smart jokes, Spotify tracks, mp3s,
+                              videos, fashion, art, deep stuff. Tumblr is 461 million different blogs, filled with
+                             literally whatever.
                         </p>
                     </div>
                 </div>
