@@ -68,6 +68,20 @@ select {
     padding-left: 15px;
     border: 1px solid #405368;
  }
+ .Modal {
+    position: absolute;
+    top: 90px;
+    left: 90px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: 540px;
+    height:  365px;
+
+}
 
 
 
@@ -98,28 +112,24 @@ select {
        
     }
 }
-.Modal {
-    position: absolute;
-    top: 90px;
-    left: 90px;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
-    width: 540px;
-    height: 300px;
 
-}
-@media screen and (max-width: 816px) {
+
+ 
+
+
+@media screen and (max-width: 650px) {
     .Modal {
-        height: 350px;
+        top: 10px;
+        left: 10px;
+        bottom: 10px;
+        right: 10px;
     }
  
 }
 
-@media screen and (max-width: 650px) {
+
+
+@media screen and (max-width: 570px) {
     .Modal {
         top: 10px;
         left: 10px;

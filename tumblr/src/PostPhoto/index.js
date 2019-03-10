@@ -39,6 +39,7 @@ class PostPhoto extends Component {
     submitPost() {
         console.log(this.state)
         // addPostToFeed
+        if (this.state.selectedCategoryValue !== '') {
         this.props.triggerAddPostToCategory({
             categoryType: this.state.selectedCategoryValue,
             postData: {
@@ -56,7 +57,10 @@ class PostPhoto extends Component {
         });
 
         this.props.triggerOnAddPostModalClose();
+    } else {
+        alert ('invalid category')
     }
+}
 
     updateInputValue(evt, inputType) {
 
@@ -80,10 +84,11 @@ class PostPhoto extends Component {
                     value={this.state.titleInputValue} 
                     onChange={evt => this.updateInputValue(evt, 'titleInputValue')}/>
                 <input 
+                className = {classes.urlInput}
                 type="text"
                 placeholder="Paste a URL"
                 onChange={evt => this.updateInputValue(evt, 'url')}/> 
-                <img src = {this.state.url} style = {{height: '200px'}}/>   
+                <img src = {this.state.url} style = {{maxHeight: '200px'}}/>   
 
                 <textarea 
                     className={classes.descriptionInput}

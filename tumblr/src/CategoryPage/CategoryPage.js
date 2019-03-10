@@ -45,7 +45,7 @@ class Category extends Component {
                 <AuthHeader history={this.props.history} location={this.props.history} />
 
                 <h1 className={classes.titleCategory}>  {this.props.posts.length ? this.props.posts[0].category : ''} </h1>
-                <div className={classes.postContainer}>
+                <section className={classes.postContainer}>
 
                     {this.props.posts.map((post, i) => <PostComponent
                         key={i}
@@ -58,7 +58,7 @@ class Category extends Component {
                     />)}
 
 
-                </div>
+                </section>
             </div>
         )
     }

@@ -39,6 +39,7 @@ class PostQuote extends Component {
     submitPost() {
         console.log(this.state)
         // addPostToFeed
+        if (this.state.selectedCategoryValue !== '') {
         this.props.triggerAddPostToCategory({
             categoryType: this.state.selectedCategoryValue,
             postData: {
@@ -56,7 +57,10 @@ class PostQuote extends Component {
         });
 
         this.props.triggerOnAddPostModalClose();
+    } else {
+        alert ('invalid category')
     }
+}
 
     updateInputValue(evt, inputType) {
 

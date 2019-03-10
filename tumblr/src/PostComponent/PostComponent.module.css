@@ -2,14 +2,16 @@
     background-color: #ffffff;
     border-radius: 3px;
     border: 1px solid black;
-    /* width: 290px; */
-    margin: 10px 0px;
+    
+    margin: 10px 10px;
 }
 
 .userImg {
     border-radius: 50%;
     height: 50px;
     width: 50px;
+    margin-top: 15px;
+    margin-left: 5px;
    
 
 }
@@ -17,15 +19,16 @@
     position: relative;
 }
 
-.userNameFont {
+/* .userNameFont {
     font-weight: bold;
-}
+} */
 
 .followLink {
     
     text-decoration: none;
     font-size:1em;
     color: #00b8ff;
+    margin-right: 5px;
 }
 
 .postImg {
