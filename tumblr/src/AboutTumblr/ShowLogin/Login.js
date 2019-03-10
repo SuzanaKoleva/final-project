@@ -12,7 +12,8 @@ const loginButton = {
     marginLeft: '-0.33%',
 }
 const getStartedButton = {
-    width: '40%',
+    width: '100%',
+    marginLeft: '-0.33%',
 }
 
 class Login extends Component {
@@ -38,7 +39,9 @@ class Login extends Component {
                         <br />
                             Stay for what you discover.
                         </p>
-                        <Button title="Get started" style={getStartedButton} />
+                        <NavLink to="/info" className={classes.NavButton}>
+                            <Button title="Get started" style={getStartedButton} />
+                        </NavLink>
 
                         <NavLink to="/login" className={classes.NavButton} >
                             <Button title="Log In" style={loginButton} />

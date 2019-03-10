@@ -17,7 +17,7 @@ import './App.css';
 import Login from '../LoginPage/Login'
 import Register from '../LoginPage/Register'
 import Home from '../Home/Home'; //TODO: delete - deprecated
-
+import Info from '../AboutTumblr/ShowLogin/Info';
 import LandingPage from '../LandingPage/LandingPage'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import CategoryPage from '../CategoryPage/CategoryPage'
@@ -108,7 +108,7 @@ window.a = this;
               <NonPrivateRoute path='/login' component={Login} isAuthenticated={this.props.isAuthenticated}/>
               <NonPrivateRoute path='/register' component={Register} isAuthenticated={this.props.isAuthenticated}/>
               <NonPrivateRoute path='/landing' component={LandingPage} isAuthenticated={this.props.isAuthenticated}/>
-
+              <NonPrivateRoute path='/info' component={Info} isAuthenticated={this.props.isAuthenticated}/>
 
               {/* Insert private routes here */}
               <PrivateRoute path='/dashboard' component={DashboardPage} isAuthenticated={this.props.isAuthenticated}/>

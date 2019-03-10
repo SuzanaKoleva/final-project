@@ -2,8 +2,13 @@
     /* background: purple;    */
     display: flex;   
     justify-content: center;
-    background-image: url('./background.jpg')
-    
+    background-image: url('./background.jpg');
+    min-height: 100vh;
+}
+@media (min-height: 568px) {
+    .container{
+        min-height: 100vh;
+    }
 }
 .text {
     color: white;
@@ -15,7 +20,13 @@
     color: white;
     margin-bottom: 0;
 }
-
+.information{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    text-align: justify;
+    padding: 4em;
+}
 .middle {
     display: flex;  
     
