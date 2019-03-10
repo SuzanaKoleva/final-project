@@ -23,13 +23,13 @@ export const loadPosts = newPosts => {
     }
 }
 
-export const onFollowAction = objectWithPostIndexProp => {
-    console.log('act', objectWithPostIndexProp)
-    return {
-        type: ON_FOLLOW, 
-        payload: objectWithPostIndexProp
-    }
-}
+// export const onFollowAction = objectWithPostIndexProp => {
+//     console.log('act', objectWithPostIndexProp)
+//     return {
+//         type: ON_FOLLOW, 
+//         payload: objectWithPostIndexProp
+//     }
+// }
 
 export const onShareAction = objPropIndex => {
     console.log('actionShare', objPropIndex)

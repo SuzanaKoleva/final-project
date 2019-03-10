@@ -5,7 +5,9 @@ import {
     USER_LOGIN,
     USER_LOGOUT,
     CURRENT_USER,
-    ON_TOGGLE_LIKE
+    ON_TOGGLE_LIKE,
+    ON_TOGGLE_FOLLOW
+
 } from './actionTypes';
 
 export const setUsersList = payload => {
@@ -54,6 +56,14 @@ export const onLikedAction = payload => {
     console.log('onLikedAction', payload)
     return {
         type: ON_TOGGLE_LIKE,
+        payload
+    }
+}
+
+export const onFollowAction = payload => {
+    console.log('onFollowAction', payload)
+    return {
+        type: ON_TOGGLE_FOLLOW,
         payload
     }
 }

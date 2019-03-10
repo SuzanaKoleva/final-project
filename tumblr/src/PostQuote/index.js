@@ -6,8 +6,8 @@ import { useState } from 'react';
 import classes from './index.module.css'
 
 // import PostComponent from '../PostComponent/PostComponent'
-import { 
-    addPostToCategory, 
+import {
+    addPostToCategory,
 } from '../CategoryPage/actions';
 
 import {
@@ -15,16 +15,18 @@ import {
 } from '../PrimaryDashboardActions/actions';
 
 
-class PostAreaText extends Component {
+class PostQuote extends Component {
     constructor(props) {
 
         super(props);
 
         this.state = {
             titleInputValue: '',
-            descriptionInputValue: '',
             tagsInputValue: '',
-            selectedCategoryValue: ''
+            descriptionInputValue: '',
+            selectedCategoryValue: '',
+            
+
         };
     }
 
@@ -41,13 +43,15 @@ class PostAreaText extends Component {
             categoryType: this.state.selectedCategoryValue,
             postData: {
                 title: this.state.titleInputValue,
-                description: this.state.descriptionInputValue,
-                tags: [this.state.tagsInputValue]
+                quote:this.state.quoteInputValue,
+                tags: [this.state.tagsInputValue],
+                
             },
+
             userData: {
-                postedFromUserId: this.props.loggedUser.id,
-                userImgSrc: this.props.loggedUser.profileImg,
-                username: this.props.loggedUser.username,
+                postetFromUserId: this.props.user.id,
+                username: this.props.user.username,
+                userImgSrc: this.props.user.profileImg,
             }
         });
 
@@ -57,7 +61,7 @@ class PostAreaText extends Component {
     updateInputValue(evt, inputType) {
 
         this.setState({
-          [inputType]: evt.target.value
+            [inputType]: evt.target.value
         });
     }
 
@@ -68,56 +72,58 @@ class PostAreaText extends Component {
 
 
             <section className={classes.container}>
-                <div className = {classes.boxTextTitleTags}>
-                <input 
-                    className={classes.titleInput}
-                    type="text" 
-                    placeholder="Title"
-                    value={this.state.titleInputValue} 
-                    onChange={evt => this.updateInputValue(evt, 'titleInputValue')}/>
 
-                <textarea 
+                <input
+                    className={classes.titleInput}
+                    type="text"
+                    placeholder="Title"
+                    value={this.state.titleInputValue}
+                    onChange={evt => this.updateInputValue(evt, 'titleInputValue')} />                    
+
+                <textarea
                     className={classes.descriptionInput}
-                    type="text" 
-                    placeholder="Your text here"
-                    value={this.state.descriptionInputValue} 
-                    onChange={evt => this.updateInputValue(evt, 'descriptionInputValue')}></textarea>
-                <input 
+                    type="text"
+                    placeholder="Your quote here"
+                    value={this.state.quoteInputValue}
+                    onChange={evt => this.updateInputValue(evt, 'quoteInputValue')}>
+                    
+                </textarea>
+                <input
                     className={classes.hashtagsInput}
-                    type="text" 
+                    type="text"
                     placeholder="#tags"
-                    value={this.state.tagsInputValue} 
-                    onChange={evt => this.updateInputValue(evt, 'tagsInputValue')}/>
-            </div>
+                    value={this.state.tagsInputValue}
+                    onChange={evt => this.updateInputValue(evt, 'tagsInputValue')} />
+
 
                 <select className={classes.selectCategory} onChange={(evt) => this.updateInputValue(evt, 'selectedCategoryValue')} value={this.state.selectedCategory}>
-                
+
                     <option value=''>Select category...</option>
                     {categoryOptions.map((option, i) => <option value={option} key={i}>{option}</option>)}
                 </select>
-                    
 
-                <footer className = {classes.footerContainer}>
-                    
+
+                <footer className={classes.footerContainer}>
+
                     <button className={classes.buttonClose} onClick={() => this.props.triggerOnAddPostModalClose()}>Close</button>
                     <button className={classes.buttonPost} onClick={() => this.submitPost()}>Post</button>
-                </footer>  
+                </footer>
 
             </section>
-            
+
         )
     }
 }
 
 const mapStateToProps = (state) => {
 
-    const { postAreaTextReducer, appReducer, userReducer } = state;
-    
+    const { postPhotoReducer, appReducer, userReducer } = state;
+
     return {
 
-        availablePostTypes: postAreaTextReducer.availablePostTypes,
+        availablePostTypes: postPhotoReducer.availablePostTypes,
         categoryOptions: appReducer.categoryOptions,
-        loggedUser: userReducer.currentUser
+        user: userReducer.currentUser
     }
 };
 
@@ -127,6 +133,6 @@ const mapDispatchToProps = dispatch => {
         triggerAddPostToCategory: (postData) => dispatch(addPostToCategory(postData)),
         triggerOnAddPostModalClose: () => dispatch(onAddPostModalClose()),
     }
-} 
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostAreaText)
+export default connect(mapStateToProps, mapDispatchToProps)(PostQuote)

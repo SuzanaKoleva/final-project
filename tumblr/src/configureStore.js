@@ -10,6 +10,7 @@ import categoriesListReducer from './ChooseFavCat/reducer';
 import authHeaderReducer from './AuthHeader/reducer';
 
 import postAreaTextReducer from './PostAreaText/reducer';
+import postPhotoReducer from './PostPhoto/reducer'
 
 const rootReducer = combineReducers({
   appReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   primaryDashboardActionsReducer,
   categoriesListReducer,
   postAreaTextReducer,
-  authHeaderReducer
+  authHeaderReducer,
+  postPhotoReducer
 });
   
 const store = createStore(rootReducer);

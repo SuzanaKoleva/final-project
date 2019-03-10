@@ -66,22 +66,3 @@
     margin-bottom: 10px;
     outline: none;
 }
-
-@media screen and (max-width: 650px) {
-    .container, .hashtagsInput, .footerContainer, .selectCategory, .descriptionInput, .footerContainer {
-        width: 100%
-    }
-    .container {
-        height: 100%;
-    }
-    .boxTextTitleTags {
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    } 
-    .descriptionInput {
-        height: 410px;
-    }   
- 
-}

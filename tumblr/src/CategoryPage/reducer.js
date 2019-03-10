@@ -23,8 +23,8 @@ const initialState = {
                     tags: ['flying', 'air', 'airplane'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                    userName: 'Gosho',
-                    postedFromUserId: 1,
+                    username: 'Service post from Tisho',
+                    postedFromUserId: 2,
 
                     isPosterFollowed: false,
                     isShare: false,
@@ -45,7 +45,7 @@ const initialState = {
                     tags: ['bark', 'jump', 'fluffy'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                    userName: 'Armin',
+                    username: 'Service post from Pesho',
                     postedFromUserId: 1,
 
                     isPosterFollowed: false,
@@ -59,14 +59,14 @@ const initialState = {
             posts: [
                 {
                     id: 3,
-                    title: 'voleyball ',
+                    title: 'Voleyball ',
                     imgSrc: 'https://www.freepngimg.com/thumb/volleyball/5-2-volleyball-png-clipart-thumb.png',
                     description: 'I am flying',
                     category: 'Travel',
                     tags: ['a', 'b', 'c'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                    userName: 'Gosho',
+                    username: 'Service post from Pesho',
                     postedFromUserId: 1,
 
                     isPosterFollowed: false,
@@ -80,15 +80,15 @@ const initialState = {
             posts: [
                 {
                     id: 4,
-                    title: 'Flight',
-                    imgSrc: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi6tP3Bie7gAhWG16QKHZTMBjMQjRx6BAgBEAU&url=https%3A%2F%2Fwww.travelmarketreport.com%2Farticles%2FHeres-Why-You-Should-Use-A-Travel-Agent-Instead-Of-Booking-Online&psig=AOvVaw1Fqwz7fFv1khpiQ76saGYe&ust=1551980893481517',
-                    description: 'I am flying',
-                    category: 'Travel',
+                    title: 'Home accessories',
+                    imgSrc: 'http://www.eneserarslan.com/wp-content/uploads/2018/10/home-accessories-candles-1-JsGnDl.jpg',
+                    description: 'accessories',
+                    category: 'Home',
                     tags: ['a', 'b', 'c'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                    userName: 'Gosho',
-                    postedFromUserId: 1,
+                    username: 'Service post from Tisho',
+                    postedFromUserId: 2,
 
                     isPosterFollowed: false,
                     isShare: false,
@@ -101,15 +101,15 @@ const initialState = {
             posts: [
                 {
                     id: 5,
-                    title: 'Flight',
-                    imgSrc: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi6tP3Bie7gAhWG16QKHZTMBjMQjRx6BAgBEAU&url=https%3A%2F%2Fwww.travelmarketreport.com%2Farticles%2FHeres-Why-You-Should-Use-A-Travel-Agent-Instead-Of-Booking-Online&psig=AOvVaw1Fqwz7fFv1khpiQ76saGYe&ust=1551980893481517',
+                    title: 'beauty things',
+                    imgSrc: 'https://scstylecaster.files.wordpress.com/2016/12/beauty-blogger-flat-lay.png',
                     description: 'I am flying',
-                    category: 'Travel',
+                    category: 'things',
                     tags: ['a', 'b', 'c'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                    userName: 'Gosho',
-                    postedFromUserId: 1,
+                    username: 'Service post from Tisho',
+                    postedFromUserId: 2,
 
                     isPosterFollowed: false,
                     isShare: false,
@@ -149,19 +149,20 @@ console.log(action.payload)
 
             const updatedCategoryPosts = [...state.categories[categoryType].posts];
 
-            const { postData } = action.payload;
+            const { postData, userData } = action.payload;
 
             const newPost = {
 
                 title: postData.title,
-                imgSrc: 'https://www.incimages.com/uploaded_files/image/970x450/getty_583734066_335273.jpg',
+                imgSrc: postData.imgSrc || '',
+                quote: postData.quote || '',
                 description: postData.description,
                 category: categoryType,
                 tags: postData.tags,
 
-                userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
-                userName: 'Gosho',
-                postedFromUserId: 1,
+                userImgSrc: userData.userImgSrc,
+                username: userData.username,
+                postedFromUserId: userData.postedFromUserId,
 
                 isPosterFollowed: false,
                 isShare: false,

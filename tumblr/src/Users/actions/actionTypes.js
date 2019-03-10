@@ -5,3 +5,5 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const CURRENT_USER = 'CURRENT_USER';
 export const ON_TOGGLE_LIKE = 'ON_TOGGLE_LIKE';
+export const ON_TOGGLE_FOLLOW = 'ON_TOGGLE_FOLLOW';
+

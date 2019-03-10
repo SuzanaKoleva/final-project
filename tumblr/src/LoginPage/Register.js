@@ -36,6 +36,7 @@ class Register extends React.Component{
             id: 0,
             profileImg: '',
             likedPosts: {},
+            followedPost: {},
 
             // TODO: to be deleted
             // followed: [],
@@ -50,6 +51,7 @@ class Register extends React.Component{
             id: 0,
             profileImg: '',
             likedPosts: {},
+            followedPost: {},
 
 
 

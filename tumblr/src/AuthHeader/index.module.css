@@ -37,7 +37,30 @@ main > section {
     height: 66px;
     border-bottom: 1px solid #21374f;
     margin-bottom: 40px;
+    padding-bottom: 35px;
+    padding-top: 35px;
 }
+
+.btnLogOut {
+    background: #405368;
+    border-radius: 5px;
+    color: white;
+    width: 75px;
+    height: 41px;
+    font-size: 13.3333px;
+    margin: 5px;
+ }
+
+ .navContainer {
+    display: flex;
+    width: 20%;
+    justify-content: flex-end;
+ }
+
+ .btnDashboard, .btnAccount {
+    font-size: 30px;
+    margin: 2.5px;
+ }
 /* select {
     width: 49%;   
     height: 41px;
@@ -59,7 +82,7 @@ select {
     background-color: #405368;
     outline: none;
     padding-left: 15px;
-    width: 49%;
+    width: 40%;
     height: 41px;
     color: white;
     
@@ -69,7 +92,7 @@ select {
  }
 
 
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 812px) {
     main > section > header > img {
         position: static;
         margin-left: 3%        
@@ -82,16 +105,48 @@ select {
         justify-content: space-between;
     }
     main > section {
-        width: 86% ;
+        width: 70% ;
        
        
     }
+    .headerContainer {
+        padding-top: 0px;
+    }
+
+    .headerContainer {
+        height: 215px;
+        border-bottom: 1px solid #21374f;
+        margin-bottom: 40px;
+        display: flex;
+
+    }
+    .rightHeaderContainer {
+        flex-direction: column
+    }
+    select {
+        width: 70%;
+        margin: 20px 0;
+    }
+    .navContainer {
+        width: 70%;
+        justify-content: space-between;
+    }
+ 
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 455px) {
 
     main > section {
         width: 100% ;      
        
     }
+    select {
+        width: 100%;
+        margin: 20px 0;
+    }
+    .navContainer {
+        width: 100%;
+        justify-content: space-between;
+    }
+
 }

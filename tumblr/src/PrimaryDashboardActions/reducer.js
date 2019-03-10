@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     isModalOpened: false,
-    postTypeOpened: 'photos',
+    postTypeOpened: '',
     availablePostTypes: {
         photos: {
             label: 'Photos',
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ON_ADD_POST_MODAL_OPEN: {
-
+            
             return {
                 ...state,
                 postTypeOpened: action.payload.postTypeOpened,
@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
         }
 
         case ON_ADD_POST_MODAL_CLOSE: {
-console.log(state.isModalOpened)
+            
             return {
                 ...state,
                 isModalOpened: false
