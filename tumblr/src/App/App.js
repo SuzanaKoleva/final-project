@@ -21,6 +21,8 @@ import Info from '../AboutTumblr/ShowLogin/Info';
 import LandingPage from '../LandingPage/LandingPage'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import CategoryPage from '../CategoryPage/CategoryPage'
+import PersonalPage from '../PersonalPage/index'
+
 
 import categoriesList from '../ChooseFavCat/CategoriesList'
 
@@ -114,6 +116,7 @@ window.a = this;
               <PrivateRoute path='/dashboard' component={DashboardPage} isAuthenticated={this.props.isAuthenticated}/>
               <PrivateRoute path='/category/:name' component={CategoryPage} isAuthenticated={this.props.isAuthenticated}/>
               <PrivateRoute path='/listCategories' component={categoriesList} isAuthenticated={this.props.isAuthenticated}/>
+              <PrivateRoute path='/personal-page' component={PersonalPage} isAuthenticated={this.props.isAuthenticated}/>
 
 
 

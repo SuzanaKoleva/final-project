@@ -61,9 +61,9 @@ const initialState = {
                     id: 3,
                     title: 'Voleyball ',
                     imgSrc: 'https://www.freepngimg.com/thumb/volleyball/5-2-volleyball-png-clipart-thumb.png',
-                    description: 'I am flying',
-                    category: 'Travel',
-                    tags: ['a', 'b', 'c'],
+                    description: 'I am playing',
+                    category: 'Sports',
+                    tags: ['sports', 'ball'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
                     username: 'Service post from Pesho',
@@ -84,7 +84,7 @@ const initialState = {
                     imgSrc: 'http://www.eneserarslan.com/wp-content/uploads/2018/10/home-accessories-candles-1-JsGnDl.jpg',
                     description: 'accessories',
                     category: 'Home',
-                    tags: ['a', 'b', 'c'],
+                    tags: ['candle', 'lights', 'bed'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
                     username: 'Service post from Tisho',
@@ -103,9 +103,9 @@ const initialState = {
                     id: 5,
                     title: 'beauty things',
                     imgSrc: 'https://scstylecaster.files.wordpress.com/2016/12/beauty-blogger-flat-lay.png',
-                    description: 'I am flying',
+                    description: 'I am pretty',
                     category: 'things',
-                    tags: ['a', 'b', 'c'],
+                    tags: ['makeup', 'brush', 'lipstick'],
 
                     userImgSrc: 'https://html.com/wp-content/plugins/htmlcodetutorial-plugin/assets/images/chrome-true.png',
                     username: 'Service post from Tisho',
@@ -151,8 +151,13 @@ console.log(action.payload)
 
             const { postData, userData } = action.payload;
 
-            const newPost = {
+            const postsFromCategory = state.categories[categoryType].posts;
 
+            const newPostId = postsFromCategory[postsFromCategory.length - 1].id + 1;
+
+            const newPost = {
+                
+                id: newPostId,
                 title: postData.title,
                 imgSrc: postData.imgSrc || '',
                 quote: postData.quote || '',

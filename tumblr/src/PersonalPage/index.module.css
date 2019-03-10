@@ -1,0 +1,60 @@
+.container {
+    background-color:#001935; 
+    padding: 10px;
+    height: 100%;
+}
+.titleCategory {
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: normal;
+}
+.postContainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+div > section {
+    width: 500px;
+}
+
+
+
+
+
+div > section > header > img {
+    position: absolute;
+    left: -75px;
+}
+
+
+@media screen and (max-width: 710px) {
+    div > section > header > img {
+        position: static;
+        margin-left: 3%        
+    }
+    div > section > header > button {
+      
+        margin-right: 3%        
+    }
+    div > section > header {
+        justify-content: space-between;
+    }
+    div > section {
+        width: 86% ;
+       
+       
+    }
+}
+
+@media screen and (max-width: 370px) {
+
+    div > section {
+        width: 100% ;      
+       
+    }
+}

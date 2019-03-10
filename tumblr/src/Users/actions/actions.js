@@ -6,7 +6,8 @@ import {
     USER_LOGOUT,
     CURRENT_USER,
     ON_TOGGLE_LIKE,
-    ON_TOGGLE_FOLLOW
+    ON_TOGGLE_FOLLOW,
+    GO_TO_DASBOARD
 
 } from './actionTypes';
 
@@ -43,6 +44,7 @@ export const logOutUser = () => {
         type: USER_LOGOUT,
     }
 }
+
 
 // export const getCurrentUser = user => {
 //     return{
