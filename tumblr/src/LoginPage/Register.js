@@ -3,7 +3,8 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { addNewUser, setUsersList } from '../Users/actions/actions';
 import { connect } from 'react-redux';
-
+import classes from './loginRegister.module.css';
+import Header from '../Header/Header';
 
 const myStyles = {
     display: 'flex',
@@ -127,10 +128,6 @@ class Register extends React.Component{
             this.props.addNewUser(this.state.newUser);
             console.log(this.props);
 
-
-            
-
-
             const updatedUsersList = [...this.props.users];
 
             const lastUserdId = this.props.users[this.props.users.length - 1].id;
@@ -155,25 +152,24 @@ class Register extends React.Component{
             console.log('uspeh');   
         }else{
             console.log('grehska');
-            console.log(this.props);
-            console.log(this.props.users);
         }
     }
 
     render() {
         return (
-            <div>
+            <div className={classes.container}>
+                <Header />
                 <h1>New registration in <strong>tumblr</strong></h1>
                 <form>
                     <div style={myStyles}>
                         <Input onChange={this.setUsername} value={this.state.newUser.username}
-                            style={inputStyles} type="text" placeholder="Username"/>
+                            style={inputStyles} className={classes.fields} type="text" placeholder="Username"/>
 
                         <Input onChange={this.setEmail} value={this.state.newUser.email}
-                            style={inputStyles} type="input" placeholder="Email"/>
+                            style={inputStyles} className={classes.fields} type="input" placeholder="Email"/>
 
                         <Input onChange={this.setPassword} value={this.state.newUser.password}
-                            style={inputStyles} type="password" placeholder="Password"/>
+                            style={inputStyles} className={classes.fields} type="password" placeholder="Password"/>
 
                         <Button onClick={this.addNewUser} style={inputStyles} title="Sign up"/>
 

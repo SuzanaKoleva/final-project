@@ -5,7 +5,16 @@ import classes from './index.module.css'
 
 import { setSelectedCategory } from '../App/actions';
 import { logOutUser } from '../Users/actions/actions';
+import Button from '../UI/Button/Button';
 
+const buttonStyles = {
+    color: '#333',
+    backgroundColor: '#fff',
+}
+
+const icons = {
+    backgroundColor: 'rgba(0,0,0,0)',
+}
 
 class AuthHeader extends Component {
     constructor(props) {

@@ -1,0 +1,28 @@
+.container{
+    background-image: url('./background.jpg');
+    min-height: 100vh;
+    color: #fff;
+}
+
+.fields{
+    /* padding: 10px; */
+    margin-bottom: 10px;
+    width: 270px;
+    border-radius: 5%;
+}
+.fields:focus{
+    border: 3px solid rgb(110, 110, 252);
+}
+
+/* .inputStyles{
+    margin-bottom: 10px;
+    padding: 12px;
+    width: 270px;
+}
+
+.myStyles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */

@@ -8,7 +8,8 @@ import Button from '../Button/Button'
 const loginButton = {
     color: 'black',
     backgroundColor: '#ffffff',
-    width: '40%',
+    width: '100%',
+    marginLeft: '-0.33%',
 }
 const getStartedButton = {
     width: '40%',
@@ -39,9 +40,9 @@ class Login extends Component {
                         </p>
                         <Button title="Get started" style={getStartedButton} />
 
-                        <Button title="Log In" style={loginButton} />
-
-                        <NavLink to="/dashboard" className={classes.NavButton} >Sign up</NavLink>
+                        <NavLink to="/login" className={classes.NavButton} >
+                            <Button title="Log In" style={loginButton} />
+                        </NavLink>
                     </div>
                 </div>
             </ScrollAnimation>
