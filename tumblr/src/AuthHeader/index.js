@@ -35,6 +35,9 @@ class AuthHeader extends Component {
     goToDashboard() {
         this.props.history.push('/dashboard')
     }
+    goToPersonalPage () {
+        this.props.history.push('/personal-page')
+    }
 
     logOut() {
 
@@ -49,7 +52,7 @@ class AuthHeader extends Component {
 
         return (
 
-
+            
             <header className={classes.headerContainer}>
                 <div className={classes.rightHeaderContainer}>
                     <h1 className={classes.titleCategory}> Choose category </h1>
@@ -64,7 +67,7 @@ class AuthHeader extends Component {
                     <div className={classes.navContainer}>
                         <div>
                             <button className={classes.btnDashboard} onClick = {() => this.goToDashboard()}>🏠</button>
-                            <button className={classes.btnAccount}>👤</button>
+                            <button className={classes.btnAccount}onClick ={() =>this.goToPersonalPage()}>👤</button>
                         </div>
                         <button className={classes.btnLogOut} onClick={() => this.logOut() }>Log Out</button>
 
