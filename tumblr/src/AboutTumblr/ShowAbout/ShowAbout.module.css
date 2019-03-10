@@ -1,5 +1,16 @@
 .container {
     background-color: #00cf35;
+    min-height: 100vh;
+}
+@media (min-height: 667px) {
+    .container{
+        max-height: 100vh;
+    }
+}
+@media (min-height: 568px) {
+    .container{
+        max-height: 100vh;
+    }
 }
 
 .title {

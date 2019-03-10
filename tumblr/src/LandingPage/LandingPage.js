@@ -22,6 +22,19 @@ class LandingPage extends Component {
 export default LandingPage
 
 class DemoCarousel extends Component {
+     
+    // scrollList = window.addEventListener('wheel', event => {
+    //     var keyUp = 38;
+    //     var keyDown = 40;
+    //     if(event.deltaY < 0) {
+    //         var x = document.createEvent("MouseEvent");
+    //         x.initMouseEvent("mouseover", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    //         window.dispatchEvent(x);
+    //     }
+    //     if(event.deltaY > 0) {
+    //         console.log('40');
+    //     }
+    // })
     render() {
         return (
             <>
@@ -32,6 +45,7 @@ class DemoCarousel extends Component {
                 showStatus={false}
                 showIndicators={true}
                 useKeyboardArrows={true}
+                onChange={this.scrollList}
                 axis={"vertical"}>
                 <ShowLogin />
                 <ShowAbout />

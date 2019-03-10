@@ -12,7 +12,7 @@ const myStyles = {
     justifyContent: 'center',
     alignItems: 'center',
 }
-const inputStyles = {
+const buttonStyles = {
     marginBottom: '10px',
     padding: '12px',
     width: '270px',
@@ -162,19 +162,18 @@ class Register extends React.Component{
             <div className={classes.container}>
                 <Header />
                 <h1>New registration in <strong>tumblr</strong></h1>
-                <form>
+                <form className={classes.formContainer}>
                     <div style={myStyles}>
                         <Input onChange={this.setUsername} value={this.state.newUser.username}
-                            style={inputStyles} className={classes.fields} type="text" placeholder="Username"/>
+                            className={classes.inputStyles} type="text" placeholder="Username"/>
 
                         <Input onChange={this.setEmail} value={this.state.newUser.email}
-                            style={inputStyles} className={classes.fields} type="input" placeholder="Email"/>
+                           className={classes.inputStyles} type="input" placeholder="Email"/>
 
                         <Input onChange={this.setPassword} value={this.state.newUser.password}
-                            style={inputStyles} className={classes.fields} type="password" placeholder="Password"/>
+                            className={classes.inputStyles} type="password" placeholder="Password"/>
 
-                        <Button onClick={this.addNewUser} style={inputStyles} title="Sign up"/>
-
+                        <Button style={buttonStyles} className={classes.buttonStyles} onClick={this.addNewUser} title="Sign up"/>
                         </div>    
                 </form>
             </div>);

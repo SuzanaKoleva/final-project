@@ -12,16 +12,16 @@ const myStyles = {
     justifyContent: 'center',
     alignItems: 'center',
 }
-const inputStyles = {
+const buttonStyles = {
     marginBottom: '10px',
     padding: '12px',
     width: '270px',
 }
-const fields = {
-    padding: '15px',
-    marginBottom: '10px',
-    width: '270px',
-}
+// const fields = {
+//     padding: '15px',
+//     marginBottom: '10px',
+//     width: '270px',
+// }
 
 class Login extends React.Component{
 
@@ -94,12 +94,12 @@ class Login extends React.Component{
                 <form>
                     <div style={myStyles}>
                          <Input onChange={this.setEmail} value={this.state.userCredentials.email}
-                            style={fields} className={classes.fields} type="input" placeholder="Email"/>
+                           className={classes.inputStyles} type="input" placeholder="Email"/>
 
                         <Input onChange={this.setPassword} value={this.state.userCredentials.password}
-                            style={fields} className={classes.fields} type="password" placeholder="Password"/>
-                        <Button onClick={this.onLoginUser} style={inputStyles} title="Log in"/>
-                        <Button onClick={this.goToRegister} style={inputStyles} title="New register"/>
+                            className={classes.inputStyles} type="password" placeholder="Password"/>
+                        <Button onClick={this.onLoginUser} style={buttonStyles} title="Log in"/>
+                        <Button onClick={this.goToRegister} style={buttonStyles} title="New register"/>
                         </div>
                 </form>
             </div>);

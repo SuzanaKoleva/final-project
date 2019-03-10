@@ -3,24 +3,43 @@
     min-height: 100vh;
     color: #fff;
 }
-
-.fields{
-    /* padding: 10px; */
-    margin-bottom: 10px;
-    width: 270px;
-    border-radius: 5%;
-}
-.fields:focus{
-    border: 3px solid rgb(110, 110, 252);
-}
-
-/* .inputStyles{
+.inputStyles{
     margin-bottom: 10px;
     padding: 12px;
     width: 270px;
+    border-radius: 5%;
 }
 
-.myStyles{
+/* .fields{
+    margin-bottom: 10px;
+    width: 270px;
+    border-radius: 5%;
+} */
+.fields:focus{
+    border: 3px solid rgb(110, 110, 252);
+}
+@media (max-width: 1024px) {
+    .formContainer{
+        display: flex;
+        justify-content: center;
+    }
+    .inputStyles{
+        height: 100px;
+        font-size: 1.7em;
+    }
+    .buttonStyles{
+        width: 300px;
+    }
+}
+@media (max-width: 710px) {
+    .inputStyles{
+        height: 75px;
+        width: 270px;
+        font-size: 1.5em;
+    }
+}
+
+/* .myStyles{
     display: flex;
     flex-direction: column;
     justify-content: center;
