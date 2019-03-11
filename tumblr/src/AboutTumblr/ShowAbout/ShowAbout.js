@@ -22,6 +22,7 @@ class ShowAbout extends Component {
                                 <li><strong>Redux</strong></li>
                                 <li><strong>HTML5</strong></li>
                                 <li><strong>CSS3</strong></li>
+                                <li><strong>Felexbox</strong></li>
                                 <li><strong>responsive design</strong></li>
                                 <li><strong>routing</strong></li>
                             </ul>

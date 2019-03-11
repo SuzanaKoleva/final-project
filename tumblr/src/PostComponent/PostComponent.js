@@ -28,11 +28,11 @@ const postComponent = props => {
         <main>
             <h1 className={classes.postTitle}>{props.propsObj.title}</h1>
             {props.propsObj.imgSrc ?
-                (<img src={props.propsObj.imgSrc} className={classes.postImg}  />)
+                (<div><img src={props.propsObj.imgSrc} className={classes.postImg}  /> </div>)
                 : null}
             <p> {props.propsObj.description}</p>
             {props.propsObj.quote ?
-            (<span> 
+            (<span className = {classes.quoteContainer}> 
             <img style = {{ height: '90px'}} src = 'https://static.thenounproject.com/png/19279-200.png'/> 
             <h1 style = {{display: 'inline'}}><i/>{props.propsObj.quote}</h1>
              <img style = {{ height: '90px'}} src= 'https://static.thenounproject.com/png/19278-200.png'/> </span>)

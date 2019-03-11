@@ -8,22 +8,24 @@ class ShowTumblrBlogs extends Component {
         return (
             <div className={classes.container}>
                 <Header />
-                <div className={classes.content}>
-                    <h1>Кои сме ние и как се разпределихме?</h1>
-                    <br />
-                    <p>
-                        <strong>Сузана Колева</strong> и <strong>Георги Керанов</strong>
+                <div className = {classes.infoContainer}>
+                    <div className={classes.content}>
+                        <h1>Кои сме ние и как се разпределихме?</h1>
                         <br />
+                        <p>
+                            <strong>Сузана Колева</strong> и <strong>Георги Керанов</strong>
+                            <br />
+                            <br />
+                            Сузана - компоненти за Категории и Постове, начална страница след логване, публикуване на пост,
+                            снимка и цитат от потребител, css/responsive design.
                         <br />
-                        Сузана - компоненти за Категории и Постове, начална страница след логване, публикуване на пост, 
-                        снимка и цитат от потребител, css/responsive design.
-                        <br />
-                        <br />
-                        Георги - регистрация и логин на потребител, начална страница преди логин, css/responsive design.
+                            <br />
+                            Георги - регистрация и логин на потребител, начална страница преди логин, css/responsive design.
                     </p>
-                </div>
-                <div className={classes.imgContainer}>
-                    <img className={classes.blogs} src={require('./blogs.png')}/>
+                    </div>
+                    <div className={classes.imgContainer}>
+                        <img className={classes.blogs} src={require('./blogs.png')} />
+                    </div>
                 </div>
             </div>
         )

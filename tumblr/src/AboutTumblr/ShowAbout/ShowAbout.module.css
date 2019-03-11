@@ -50,21 +50,30 @@ ul > li {
     margin-top: 10%;
 }
 .center {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 45%;
+    width: 45%; */
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    /* width: 45%; */
+    align-items: center;
 }
 .backgroundImage{
     width: 40%;
     height: 25%;
-    margin-left: 11em;
+    /* margin-left: 11em;
     margin-top: -3em;
-    /* margin-bottom: 10em; */
+    margin-bottom: 10em; */
 }
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .backgroundImage{
         margin-left: 5em;
         margin-top: -1em;
     }
-}
+} */

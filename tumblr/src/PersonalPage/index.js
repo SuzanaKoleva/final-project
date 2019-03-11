@@ -54,7 +54,7 @@ class PersonalPage extends Component {
 
                 <AuthHeader history={this.props.history} location={this.props.history} />
 
-                <div className={classes.postContainer}>
+                <main className={classes.feedContainer}>
 
                     {userPosts.map((post, i) => <PostComponent
                         key={i}
@@ -67,7 +67,7 @@ class PersonalPage extends Component {
                     />)}
 
 
-                </div>
+                </main>
             </div>
         )
     }

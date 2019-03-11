@@ -34,19 +34,29 @@
     flex-direction: column;
     justify-content: flex-start;
     color: #fff;
-    width: 34%;
-    margin-left: 8%;
-    margin-top: 8%;
+    width: 60%;
+    /* margin-left: 8%;
+    margin-top: 8%; */
     text-align: justify;
 }
 
 .imgContainer{
     width: 60%;
     height: 25%;
-    margin-left: 8%;
+    /* margin-left: 8%; */
 }
 
 .blogs{
     width: 60%;
     /* height: 55%; */
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+}
+.title {
+    width: 60%;
 }

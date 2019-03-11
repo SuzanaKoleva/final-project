@@ -18,13 +18,23 @@
     align-items: center;
     
 }
-div > section {
+/* div > section {
     width: 500px;
+} */
+
+
+
+.feedContainer{
+    display: flex;
+    flex-direction: column;
+    /* justify-items: center; */
+    align-items: center;
 }
-
-
-
-
+main > section {
+    width: 500px ;
+   
+   
+}
 
 div > section > header > img {
     position: absolute;

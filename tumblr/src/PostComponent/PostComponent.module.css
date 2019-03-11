@@ -31,9 +31,9 @@
     margin-right: 5px;
 }
 
-.postImg {
+/* .postImg {
     max-width: 100%;
-}
+} */
 .postTitle {
     font-size: 1em;
 }
@@ -61,6 +61,10 @@
 .btnClick {
     font-size: 50px;
 }
-
+.quoteContainer {
+    
+    display: flex;
+    justify-content: center;
+}
 
 

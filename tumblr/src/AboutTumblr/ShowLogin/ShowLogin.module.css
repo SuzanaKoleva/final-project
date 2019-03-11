@@ -26,6 +26,7 @@
     width: 100vw;
     text-align: justify;
     padding: 4em;
+    color: #ffff;
 }
 .middle {
     display: flex;  
