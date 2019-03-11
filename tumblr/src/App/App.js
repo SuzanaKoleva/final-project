@@ -45,7 +45,7 @@ import { setCategoriesData } from '../CategoryPage/actions'
 
 
 
-let clearOnBeforeUnload = null;
+
 
 class App extends Component {
 
@@ -67,13 +67,10 @@ window.a = this;
 
   componentDidMount() {
 
-    clearOnBeforeUnload = window.addEventListener('beforeunload', () => this.cacheAppStateToStorage());
+     window.addEventListener('beforeunload', () => this.cacheAppStateToStorage());
   }
 
-  componentWillUnmount() {
 
-    clearOnBeforeUnload();
-  }
 
   cacheAppStateToStorage() {
     
