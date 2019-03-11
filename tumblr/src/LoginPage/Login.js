@@ -77,7 +77,6 @@ class Login extends React.Component{
         };
 
         sessionStorage.setItem('user', JSON.stringify(userData));
-        
         this.props.history.push('/');
     }
 
