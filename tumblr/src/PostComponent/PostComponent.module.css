@@ -6,6 +6,12 @@
     margin: 10px 10px;
 }
 
+@media (max-width: 519px){
+    .container{
+        max-width: 100vw;
+    }
+}
+
 .userImg {
     border-radius: 50%;
     height: 50px;

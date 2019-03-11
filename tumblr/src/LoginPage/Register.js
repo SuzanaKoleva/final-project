@@ -151,7 +151,7 @@ class Register extends React.Component{
             }});
 
             this.props.history.push('/login');
-            console.log('uspeh');   
+            console.log('uspeh');  
         }else{
             console.log('grehska');
         }
